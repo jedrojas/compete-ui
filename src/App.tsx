@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import { AuthProvider } from './components/contexts/AuthProvider';
+import CompetitionsPage from './components/pages/competitions-page/competitions-page';
+import DashboardPage from './components/pages/dashboard-page/dashboard-page';
+import HomePage from './components/pages/home-page/home-page';
+import { LandingPage } from './components/pages/landing-page/landing-page';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <LandingPage />
+          </Route>
+          <Route path="/dashboard">
+            <DashboardPage />
+          </Route>
+          <Route path="/competitions">
+            <CompetitionsPage />
+          </Route>
+          <Route path="/teams">
+            <HomePage />
+          </Route>
+        </Switch>
+      </Router>
+    </AuthProvider>
   );
 }
 

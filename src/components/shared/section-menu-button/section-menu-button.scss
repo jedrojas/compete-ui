@@ -1,0 +1,15 @@
+.no-hover-line a {
+  text-decoration: none;
+}
+
+.underlined {
+  transition: border-bottom 0.11s;
+}
+
+.underlined:hover {
+  border-bottom: 4px solid #ffc033;
+}
+
+.active .underlined {
+  border-bottom: 4px solid #ffc033;
+}
