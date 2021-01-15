@@ -5,7 +5,9 @@ import React from 'react';
 export interface IBody {}
 
 export const Body: React.FC<IBody> = ({ children }) => {
-  return <>{children}</>;
+  return (
+    <div className="d-flex flex-column justify-content-center">{children}</div>
+  );
 };
 
 export default Body;

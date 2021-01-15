@@ -62,3 +62,13 @@ a:active {
   text-decoration: none;
   background-color: black;
 }
+
+.sub-title {
+  color: #3b7080;
+  font-family: "Montserrat";
+  font-size: 12px;
+}
+
+.font-size-12 {
+  font-size: 12px;
+}
