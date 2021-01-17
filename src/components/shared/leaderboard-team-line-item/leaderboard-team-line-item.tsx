@@ -1,4 +1,4 @@
-import './leaderboard-line-item.scss';
+import './leaderboard-team-line-item.scss';
 
 import { faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,12 +8,12 @@ import { Col, Row } from 'react-bootstrap';
 import monstarsImg from '../../../assets/Monstars.jpg';
 import { ILeaderboardLI } from '../../../models.ts/data-models';
 
-export interface ILeaderboardLineItem {
+export interface ILeaderboardTeamLineItem {
   data: ILeaderboardLI;
   pos: number;
 }
 
-export const LeaderboardLineItem: React.FC<ILeaderboardLineItem> = ({
+export const LeaderboardTeamLineItem: React.FC<ILeaderboardTeamLineItem> = ({
   data,
   pos,
 }) => {
@@ -32,4 +32,4 @@ export const LeaderboardLineItem: React.FC<ILeaderboardLineItem> = ({
   );
 };
 
-export default LeaderboardLineItem;
+export default LeaderboardTeamLineItem;

@@ -8,7 +8,7 @@ export const AuthProvider: React.FC<IAuthProvider> = ({ children }) => {
     <Auth0Provider
       domain="dev-k8hhju21.us.auth0.com"
       clientId="fLBBvmcNhEQ90Vm739qxFhsSMDjGvdss"
-      redirectUri="http://localhost:3001/home"
+      redirectUri="http://localhost:3001/dashboard"
     >
       {children}
     </Auth0Provider>

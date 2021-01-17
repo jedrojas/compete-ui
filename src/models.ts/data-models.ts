@@ -14,6 +14,7 @@ export interface ILeaderboardLI {
   name: string;
   points: number;
   image?: string;
+  first_name?: string;
 }
 
 export const sbrIconMap = new Map([

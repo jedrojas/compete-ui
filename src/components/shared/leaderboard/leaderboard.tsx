@@ -4,18 +4,23 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 
 import { ILeaderboardLI } from '../../../models.ts/data-models';
-import LeaderboardLineItem from '../leaderboard-line-item/leaderboard-line-item';
+import LeaderboardAthleteLineItem from '../leaderboard-athlete-line-item/leaderboard-athlete-line-item';
+import LeaderboardTeamLineItem from '../leaderboard-team-line-item/leaderboard-team-line-item';
 
 export interface ILeaderboard {
   rows?: ILeaderboardLI[];
+  type: string;
 }
 
-export const Leaderboard: React.FC<ILeaderboard> = ({ rows }) => {
+export const Leaderboard: React.FC<ILeaderboard> = ({ rows, type }) => {
+  const LeaderboardLineItem =
+    type === "team" ? LeaderboardTeamLineItem : LeaderboardAthleteLineItem;
+
   return (
     <Row>
       {rows
         ? rows.map((row, index) => (
-            <Col xs="12" key={row.id}>
+            <Col xs="12" key={`${row.id}:${index}`}>
               <LeaderboardLineItem pos={index + 1} data={row} />
             </Col>
           ))

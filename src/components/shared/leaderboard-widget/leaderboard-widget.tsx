@@ -34,7 +34,7 @@ export const LeaderboardWidget: React.FC<ILeaderboardWidget> = () => {
       </BaseWidget.Header>
       <BaseWidget.Body>
         <Col xs="12">
-          <Leaderboard rows={data} />
+          <Leaderboard rows={data} type={leaderboardType} />
         </Col>
       </BaseWidget.Body>
     </BaseWidget>

@@ -1,13 +1,13 @@
 import './base-neo-button.scss';
 
 import classnames from 'classnames';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export interface IBaseNeoButton {
   className?: string;
   rounded?: boolean;
   onClick?: () => void;
-  // isPressed?: boolean;
+  pressed?: boolean;
   isNavLink?: boolean;
   width?: string;
   height?: string;
@@ -18,12 +18,16 @@ export const BaseNeoButton: React.FC<IBaseNeoButton> = ({
   className,
   rounded = true,
   onClick,
-  // isPressed,
+  pressed,
   isNavLink,
   width = "100%",
   height = "100%",
 }) => {
-  const [isPressed, setIsPressed] = useState(false);
+  const [isPressed, setIsPressed] = useState(pressed);
+
+  useEffect(() => {
+    setIsPressed(pressed);
+  }, [pressed]);
 
   const handleClick = () => {
     setIsPressed((isPressed) => !isPressed);

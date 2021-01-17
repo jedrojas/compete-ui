@@ -1,6 +1,6 @@
 import './leaderboard-type-buttons.scss';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 
 import BaseNeoButton from '../../bases/base-neo-button/base-neo-button';
@@ -12,19 +12,42 @@ export interface ILeaderboardTypeButtons {
 export const LeaderboardTypeButtons: React.FC<ILeaderboardTypeButtons> = ({
   handleTypeButtonClick,
 }) => {
+  const [isTeamPressed, setIsTeamPressed] = useState<boolean>(true);
+  const [isAthletePressed, setIsAthletePressed] = useState<boolean>();
+
+  const handleClick = (type: string) => {
+    switch (type) {
+      case "team":
+        setIsTeamPressed(true);
+        setIsAthletePressed(false);
+        break;
+      case "athlete":
+        setIsTeamPressed(false);
+        setIsAthletePressed(true);
+        break;
+      default:
+        setIsTeamPressed(false);
+        setIsAthletePressed(false);
+        break;
+    }
+    handleTypeButtonClick(type);
+  };
+
   return (
     <Row noGutters>
       <Col xs="6">Leaderboard</Col>
       <Col xs="6" className="d-flex flex-row font-size-12">
         <BaseNeoButton
-          onClick={() => handleTypeButtonClick("team")}
+          onClick={() => handleClick("team")}
           className="mx-2"
+          pressed={isTeamPressed}
         >
           Team
         </BaseNeoButton>
         <BaseNeoButton
-          onClick={() => handleTypeButtonClick("athlete")}
+          onClick={() => handleClick("athlete")}
           className="ml-2"
+          pressed={isAthletePressed}
         >
           Athlete
         </BaseNeoButton>
