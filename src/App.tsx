@@ -9,6 +9,7 @@ import CompetitionsPage from './components/pages/competitions-page/competitions-
 import DashboardPage from './components/pages/dashboard-page/dashboard-page';
 import HomePage from './components/pages/home-page/home-page';
 import { LandingPage } from './components/pages/landing-page/landing-page';
+import SettingsPage from './components/pages/settings-page/settings-page';
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path="/teams">
             <HomePage />
+          </Route>
+          <Route path="/settings">
+            <SettingsPage />
           </Route>
         </Switch>
       </Router>
