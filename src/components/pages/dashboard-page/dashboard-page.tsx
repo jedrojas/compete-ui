@@ -1,18 +1,19 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import React, { useEffect } from 'react';
-import { Button } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button, Modal } from 'react-bootstrap';
 
+import { useFirstAndLastNameCheck } from '../../hooks/first-and-last-name-check-hooks';
 import NavBar from '../../shared/nav-bar/nav-bar';
 import DashboardPageContainer from './dashboard-page-container/dashboard-page-container';
 
 export interface IDashboardPage {}
 
 export const DashboardPage: React.FC<IDashboardPage> = () => {
-  const { user, logout } = useAuth0();
-
-  useEffect(() => {
-    console.log("--user--", user);
-  }, [user]);
+  const { logout } = useAuth0();
+  const showCompleteSignUpForm = useFirstAndLastNameCheck();
+  const [showSignUpModal, setShowSignUpModal] = useState(
+    showCompleteSignUpForm
+  );
 
   return (
     <DashboardPageContainer>
@@ -20,6 +21,23 @@ export const DashboardPage: React.FC<IDashboardPage> = () => {
       <Button onClick={() => logout({ returnTo: "http://localhost:3001/" })}>
         Logout
       </Button>
+
+      <Modal show={showSignUpModal} onHide={() => setShowSignUpModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Complete Sign Up</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          Add sign on fields here. Use react forms here to make this look dope
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button onClick={() => console.log("--button clicked--")}>
+            Submit
+          </Button>
+          Make this match the theme
+        </Modal.Footer>
+      </Modal>
     </DashboardPageContainer>
   );
 };

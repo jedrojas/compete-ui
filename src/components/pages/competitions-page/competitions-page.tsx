@@ -1,5 +1,4 @@
-import { useAuth0 } from '@auth0/auth0-react';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 
 import ActivityWidget from '../../shared/activity-widget/activity-widget';
@@ -10,12 +9,6 @@ import CompetitionsPageContainer from './competitions-page-container/competition
 export interface ICompetitionsPage {}
 
 export const CompetitionsPage: React.FC<ICompetitionsPage> = () => {
-  const { user } = useAuth0();
-
-  useEffect(() => {
-    console.log("--user--", user);
-  }, [user]);
-
   return (
     <CompetitionsPageContainer>
       <NavBar />
