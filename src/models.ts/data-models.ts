@@ -1,5 +1,8 @@
 import { faBiking, faRunning, faSwimmer } from '@fortawesome/free-solid-svg-icons';
 
+import { ICompetitionType } from '../components/shared/new-competition-modal/new-competition-modal';
+import { INewCompetitionStep } from './enums';
+
 export interface IActivity {
   id: number;
   distance: number;
@@ -22,3 +25,22 @@ export const sbrIconMap = new Map([
   ["bike", faBiking],
   ["run", faRunning],
 ]);
+
+export interface NewCompetitionStepProps {
+  setStep: (val: INewCompetitionStep) => void;
+  competitionType: ICompetitionType;
+  setType: (type: ICompetitionType) => void;
+  stepStack: INewCompetitionStep[];
+  setStepStack: (stack: INewCompetitionStep[]) => void;
+  startDate: Date;
+  setStartDate: (date: Date) => void;
+  endDate?: Date | null;
+  setEndDate: (date: Date) => void;
+  competitionName: string;
+  setCompetitionName: (name: string) => void;
+  onSubmit: () => void;
+}
+
+export type NewCompetitionStepConfig = {
+  [step in INewCompetitionStep]?: React.FC<NewCompetitionStepProps>;
+};

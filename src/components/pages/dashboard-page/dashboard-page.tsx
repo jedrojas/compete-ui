@@ -2,31 +2,43 @@ import '../../../styles/variables.scss';
 
 import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
-import { Button, Col, Modal, Row } from 'react-bootstrap';
+import { Col, Modal, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
 import BaseNeoButton from '../../bases/base-neo-button/base-neo-button';
 import { useFirstAndLastNameCheck } from '../../hooks/first-and-last-name-check-hooks';
+import { useUserDashboardCompetitions } from '../../hooks/user-dashboard-hooks';
 import { useUpdateUserMetadata } from '../../hooks/user-metadata-hooks';
+import DashboardCompetitionsSection from '../../shared/dashboard-competitions-section/dashboard-competitions-section';
 import NavBar from '../../shared/nav-bar/nav-bar';
+import UserCompetitionsSection from '../../shared/user-competitions-section/user-competitions-section';
 import DashboardPageContainer from './dashboard-page-container/dashboard-page-container';
 
 export interface IDashboardPage {}
 
 export const DashboardPage: React.FC<IDashboardPage> = () => {
+  // TODO: is this really the most efficient way to handle sign up? (low priority)
   const { showSignUpModal, setShowSignUpModal } = useFirstAndLastNameCheck();
-  const { logout } = useAuth0();
   const { updateUser } = useUpdateUserMetadata();
   const { register, handleSubmit, errors } = useForm();
+
+  const { user } = useAuth0();
+
+  const { data, loading, error } = useUserDashboardCompetitions(user?.sub);
+  console.log("--DEBUGGING user competitions--", data, loading, error);
 
   return (
     <DashboardPageContainer>
       <NavBar />
-      {/* TODO: handle this better */}
-      <Button onClick={() => logout({ returnTo: "http://localhost:3001/" })}>
-        Logout
-      </Button>
+      <DashboardCompetitionsSection />
+      <div>
+        Things to add to this page: Competitions section (list comps, create new
+        comp), Teams section (list teams), activity summary,
+      </div>
 
+      <UserCompetitionsSection />
+
+      {/* TODO: extract the following into its own component */}
       <Modal
         show={showSignUpModal}
         onHide={() => setShowSignUpModal(false)}
@@ -87,9 +99,3 @@ export const DashboardPage: React.FC<IDashboardPage> = () => {
 };
 
 export default DashboardPage;
-
-// TODO: Must do today:
-// user login, and let user add settings (first name, last name, profile picture (unique color as default))
-// FIGURE OUT AWS IMAGES this has to be done eventually, "just do it" now YOU GOT THIS
-// set up settings page so user can see what they set
-// give user option (on settings page) to edit theirs settings

@@ -1,0 +1,7 @@
+export enum INewCompetitionStep {
+  JOIN_OR_CREATE = "JOIN_OR_CREATE",
+  TEAM_OR_INDIVIDUAL = "TEAM_OR_INDIVIDUAL",
+  NAME_AND_ICON = "NAME_AND_ICON",
+  DATES = "DATES",
+  REVIEW = "REVIEW",
+}
