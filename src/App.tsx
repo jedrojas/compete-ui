@@ -22,7 +22,7 @@ function App() {
           <Route path="/dashboard">
             <DashboardPage />
           </Route>
-          <Route exact path="/competitions">
+          <Route path="/competitions">
             <CompetitionsPage />
           </Route>
           <Route path="/teams">

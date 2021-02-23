@@ -11,6 +11,8 @@ export interface IBaseNeoButton {
   isNavLink?: boolean;
   width?: string;
   height?: string;
+  // TODO: type this
+  style?: any;
 }
 
 export const BaseNeoButton: React.FC<IBaseNeoButton> = ({
@@ -22,6 +24,7 @@ export const BaseNeoButton: React.FC<IBaseNeoButton> = ({
   isNavLink,
   width = "100%",
   height = "100%",
+  style,
 }) => {
   const [isPressed, setIsPressed] = useState(pressed);
 
@@ -50,7 +53,7 @@ export const BaseNeoButton: React.FC<IBaseNeoButton> = ({
         }
       )}
       onClick={handleClick}
-      style={{ width, height }}
+      style={{ ...style, width, height }}
     >
       {children}
     </div>

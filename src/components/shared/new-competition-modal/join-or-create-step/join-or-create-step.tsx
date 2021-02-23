@@ -29,8 +29,13 @@ export const JoinOrCreateStep: React.FC<NewCompetitionStepProps> = ({
         >
           Create My Own Competition
         </BaseNeoButton>
-        <BaseNeoButton className="my-2">
-          {/* TODO: implement this */}
+        <BaseNeoButton
+          className="my-2"
+          onClick={() => {
+            setStep(INewCompetitionStep.FIND_COMPETITION);
+            setStepStack([...stepStack, INewCompetitionStep.JOIN_OR_CREATE]);
+          }}
+        >
           Join Existing Competition
         </BaseNeoButton>
       </Modal.Body>

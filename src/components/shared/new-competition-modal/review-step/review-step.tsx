@@ -5,6 +5,7 @@ import 'react-date-range/dist/theme/default.css';
 import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
 import { Modal } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 import { NewCompetitionStepProps } from '../../../../models.ts/data-models';
 import BaseNeoButton from '../../../bases/base-neo-button/base-neo-button';
@@ -20,7 +21,8 @@ export const ReviewStep: React.FC<NewCompetitionStepProps> = ({
   setStepStack,
 }) => {
   const { createCompetition } = useCreateCompetition();
-  const { user } = useAuth0()
+  const { user } = useAuth0();
+  const history = useHistory();
 
   return (
     <>
@@ -40,11 +42,9 @@ export const ReviewStep: React.FC<NewCompetitionStepProps> = ({
           className="cursor-pointer"
           onClick={() => {
             const step = stepStack.pop();
-
             if (step) {
               setStep(step);
             }
-
             setStepStack([...stepStack]);
           }}
         >
@@ -53,16 +53,14 @@ export const ReviewStep: React.FC<NewCompetitionStepProps> = ({
 
         <BaseNeoButton
           className="w-25 p-0"
-          onClick={
-            () =>
-              createCompetition(
-                user.sub,
-                competitionName,
-                competitionType,
-                startDate,
-                endDate,
-              )
-            // .then(() => addUserToCompetition(userId, competitionId))
+          onClick={() =>
+            createCompetition(
+              user.sub,
+              competitionName,
+              competitionType,
+              startDate,
+              endDate
+            ).then((data) => history.push(`competitions/${data.id}`))
           }
         >
           Submit

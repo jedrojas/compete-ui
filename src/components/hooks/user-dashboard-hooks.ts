@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import { useEffect, useState } from 'react';
 
-import { ILeaderboardLI } from '../../models.ts/data-models';
+import { ICompetition, ILeaderboardLI } from '../../models.ts/data-models';
 
 export const getLeaderboard = (type: string) => {
   // TODO: hardcoding ids for now
@@ -28,7 +28,7 @@ export const getLeaderboard = (type: string) => {
 };
 
 export const useUserDashboardCompetitions = (uId?: string) => {
-  const [data, setData] = useState();
+  const [data, setData] = useState<ICompetition[]>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
 

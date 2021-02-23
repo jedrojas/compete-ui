@@ -12,7 +12,6 @@ export const NameAndIconStep: React.FC<NewCompetitionStepProps> = ({
   setStep,
   stepStack,
   setStepStack,
-  onSubmit,
   competitionName,
   setCompetitionName,
 }) => {

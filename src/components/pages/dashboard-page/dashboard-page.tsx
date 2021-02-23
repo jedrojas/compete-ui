@@ -1,13 +1,11 @@
 import '../../../styles/variables.scss';
 
-import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
 import { Col, Modal, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
 import BaseNeoButton from '../../bases/base-neo-button/base-neo-button';
 import { useFirstAndLastNameCheck } from '../../hooks/first-and-last-name-check-hooks';
-import { useUserDashboardCompetitions } from '../../hooks/user-dashboard-hooks';
 import { useUpdateUserMetadata } from '../../hooks/user-metadata-hooks';
 import DashboardCompetitionsSection from '../../shared/dashboard-competitions-section/dashboard-competitions-section';
 import NavBar from '../../shared/nav-bar/nav-bar';
@@ -21,11 +19,6 @@ export const DashboardPage: React.FC<IDashboardPage> = () => {
   const { showSignUpModal, setShowSignUpModal } = useFirstAndLastNameCheck();
   const { updateUser } = useUpdateUserMetadata();
   const { register, handleSubmit, errors } = useForm();
-
-  const { user } = useAuth0();
-
-  const { data, loading, error } = useUserDashboardCompetitions(user?.sub);
-  console.log("--DEBUGGING user competitions--", data, loading, error);
 
   return (
     <DashboardPageContainer>

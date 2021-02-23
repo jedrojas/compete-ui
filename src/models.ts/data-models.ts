@@ -38,9 +38,19 @@ export interface NewCompetitionStepProps {
   setEndDate: (date: Date) => void;
   competitionName: string;
   setCompetitionName: (name: string) => void;
-  onSubmit: () => void;
 }
 
 export type NewCompetitionStepConfig = {
   [step in INewCompetitionStep]?: React.FC<NewCompetitionStepProps>;
 };
+
+export interface ICompetition {
+  // TODO: add the rest of the variables
+  id: string;
+  name?: string;
+  type?: string;
+  startDate?: Date;
+  endDate?: Date;
+}
+
+export type IJoinableCompetition = ICompetition & { is_joined: boolean };
