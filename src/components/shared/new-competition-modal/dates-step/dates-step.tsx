@@ -5,7 +5,6 @@ import 'react-date-range/dist/theme/default.css';
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import { DateRange } from 'react-date-range';
-import { useForm } from 'react-hook-form';
 
 import { NewCompetitionStepProps } from '../../../../models.ts/data-models';
 import { INewCompetitionStep } from '../../../../models.ts/enums';
@@ -19,7 +18,6 @@ export const DatesStep: React.FC<NewCompetitionStepProps> = ({
   endDate,
   setEndDate,
 }) => {
-  const { register, handleSubmit, errors } = useForm();
   const [state, setState] = useState([
     {
       startDate: startDate,

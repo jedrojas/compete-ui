@@ -6,3 +6,10 @@ export enum INewCompetitionStep {
   DATES = "DATES",
   REVIEW = "REVIEW",
 }
+
+export enum CompetitionStatus {
+  FINISHED = "FINISHED",
+  NOT_STARTED = "NOT_STARTED",
+  NOT_SET = "NOT_SET",
+  IN_PROGRESS = "IN_PROGRESS",
+}

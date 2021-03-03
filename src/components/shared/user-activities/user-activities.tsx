@@ -14,7 +14,7 @@ export interface IUserActivities {
 export const UserActivities: React.FC<IUserActivities> = ({ activities }) => {
   return activities ? (
     <BaseNeoCard className="base-neo-card-depressed flex-column my-3">
-      {/* Abstract this into its own component */}
+      {/* TODO: Abstract this into its own component */}
       <Row className="m-2 py-2 font-montserrat user-activity-li uat-header">
         <Col
           xs="5"

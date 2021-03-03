@@ -1,11 +1,11 @@
 import './activity-widget.scss';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Col } from 'react-bootstrap';
 
-import { IActivity } from '../../../models.ts/data-models';
 import BaseWidget from '../../bases/base-widget/base-widget';
-import { getUserActivitiesByCompetitionQuery } from '../../hooks/activity-query-hooks';
+import { useActivityWidgetData } from '../../hooks/activity-widget-hooks';
+import { useCompetitionState } from '../../pages/competitions-page/competition-context';
 import PointsEarned from '../points-earned/points-earned';
 import UserActivitiesSummary from '../user-activities-summary/user-activities-summary';
 import UserActivities from '../user-activities/user-activities';
@@ -13,24 +13,11 @@ import UserActivities from '../user-activities/user-activities';
 export interface IActivityWidget {}
 
 export const ActivityWidget: React.FC<IActivityWidget> = ({ children }) => {
-  const [data, setData] = useState<IActivity[]>();
-  const [points, setPoints] = useState<number>();
-  const [numActivities, setNumActivities] = useState<number>();
+  const { cid } = useCompetitionState();
 
-  useEffect(() => {
-    getUserActivitiesByCompetitionQuery()
-      .then((data) => {
-        setData(data);
-        setNumActivities(data.length);
-        setPoints(
-          data.reduce(
-            (totalPoints, activity) => totalPoints + activity.points,
-            0
-          )
-        );
-      })
-      .catch((e) => console.log("Error:", e));
-  }, []);
+  // TODO: consider creating adding a user competition activities
+  // context for these variables
+  const { activities, numActivities, points } = useActivityWidgetData(cid);
 
   // TODO: this should be added to user_competition table
   // If no targetPoints, prompt user to set goal
@@ -51,7 +38,7 @@ export const ActivityWidget: React.FC<IActivityWidget> = ({ children }) => {
           />
         </Col>
         <Col xs="12">
-          <UserActivities activities={data} />
+          <UserActivities activities={activities} />
         </Col>
       </BaseWidget.Body>
     </BaseWidget>

@@ -10,7 +10,7 @@ export interface IUserActivitiesSummary {
 }
 
 export const UserActivitiesSummary: React.FC<IUserActivitiesSummary> = ({
-  numActivities,
+  numActivities = 0,
   points = 0,
   targetPoints,
 }) => {

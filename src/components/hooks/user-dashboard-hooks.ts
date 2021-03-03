@@ -1,67 +1,17 @@
-import fetch from 'node-fetch';
-import { useEffect, useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 
-import { ICompetition, ILeaderboardLI } from '../../models.ts/data-models';
+import { ICompetition } from '../../models.ts/data-models';
+import { useFetch } from './fetch';
 
-export const getLeaderboard = (type: string) => {
-  // TODO: hardcoding ids for now
-  const cId = 0;
+export const useDashboardCompetitions = () => {
+  const { user } = useAuth0();
 
-  return new Promise<ILeaderboardLI[]>(async (resolve, reject) => {
-    try {
-      await fetch(
-        `http://localhost:3000/competition/${cId}/leaderboard/${type}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-        .then((res) => res.json())
-        .then((data) => resolve(data))
-        .catch((e) => reject(e));
-    } catch (e) {
-      reject(e);
-    }
-  });
-};
+  const { data, error } = useFetch<ICompetition[]>(
+    `http://localhost:3000/user/${user?.sub}/competitions`,
+    "GET"
+  );
 
-export const useUserDashboardCompetitions = (uId?: string) => {
-  const [data, setData] = useState<ICompetition[]>();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
+  if (error) console.log("--error fetching dashboard competitions--", error);
 
-  useEffect(() => {
-    const getUserCompetitions = async () => {
-      setLoading(true);
-      new Promise<void>(async (resolve, reject) => {
-        try {
-          await fetch(`http://localhost:3000/user/${uId}/competitions`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              setData(data);
-              setLoading(false);
-            })
-            .catch((e) => {
-              setError(e);
-              throw new Error("Error getting user competitions");
-            });
-        } catch (e) {
-          console.log("--error--", e);
-        }
-      });
-    };
-
-    if (uId) {
-      getUserCompetitions();
-    }
-  }, [uId]);
-
-  return { data, loading, error };
+  return { dashboardCompetitions: data ?? ([] as ICompetition[]) };
 };

@@ -1,7 +1,7 @@
 import { faBiking, faRunning, faSwimmer } from '@fortawesome/free-solid-svg-icons';
 
 import { ICompetitionType } from '../components/shared/new-competition-modal/new-competition-modal';
-import { INewCompetitionStep } from './enums';
+import { CompetitionStatus, INewCompetitionStep } from './enums';
 
 export interface IActivity {
   id: number;
@@ -32,7 +32,7 @@ export interface NewCompetitionStepProps {
   setType: (type: ICompetitionType) => void;
   stepStack: INewCompetitionStep[];
   setStepStack: (stack: INewCompetitionStep[]) => void;
-  startDate: Date;
+  startDate?: Date | null;
   setStartDate: (date: Date) => void;
   endDate?: Date | null;
   setEndDate: (date: Date) => void;
@@ -44,13 +44,18 @@ export type NewCompetitionStepConfig = {
   [step in INewCompetitionStep]?: React.FC<NewCompetitionStepProps>;
 };
 
+export interface CompetitionStatusComponentProps {}
+
+export type CompetitionStatusConfig = {
+  [step in CompetitionStatus]?: React.FC<CompetitionStatusComponentProps>;
+};
+
 export interface ICompetition {
-  // TODO: add the rest of the variables
   id: string;
   name?: string;
   type?: string;
-  startDate?: Date;
-  endDate?: Date;
+  start_date?: Date;
+  end_date?: Date;
 }
 
 export type IJoinableCompetition = ICompetition & { is_joined: boolean };

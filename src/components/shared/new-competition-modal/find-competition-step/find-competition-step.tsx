@@ -2,18 +2,15 @@ import './find-competition-step.scss';
 
 import React from 'react';
 import { Col, Modal, Row } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 import { NewCompetitionStepProps } from '../../../../models.ts/data-models';
 import BaseNeoButton from '../../../bases/base-neo-button/base-neo-button';
 import { useJoinableCompetitionsQuery } from '../../../hooks/competition-hooks';
 import { generateColor } from '../../../utils/generate-color';
 
-export const FindCompetitionStep: React.FC<NewCompetitionStepProps> = ({
-  setStep,
-  setType,
-  stepStack,
-  setStepStack,
-}) => {
+export const FindCompetitionStep: React.FC<NewCompetitionStepProps> = () => {
+  const history = useHistory();
   const { data } = useJoinableCompetitionsQuery();
 
   return (
@@ -26,10 +23,11 @@ export const FindCompetitionStep: React.FC<NewCompetitionStepProps> = ({
       <Modal.Body>
         {data &&
           data.map((competition) => (
-            <span id={competition.id}>
+            <span key={competition.id}>
               <BaseNeoButton
                 className="d-flex h-75 w-100 align-items-center mx-2"
                 style={competition.is_joined ? { opacity: ".5" } : null}
+                onClick={() => history.push(`/competitions/${competition.id}`)}
               >
                 <Col
                   xs="3"

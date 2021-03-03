@@ -5,6 +5,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { AuthProvider } from './components/contexts/AuthProvider';
+import { UserProvider } from './components/contexts/user-context';
 import CompetitionsPage from './components/pages/competitions-page/competitions-page';
 import DashboardPage from './components/pages/dashboard-page/dashboard-page';
 import HomePage from './components/pages/home-page/home-page';
@@ -14,25 +15,27 @@ import SettingsPage from './components/pages/settings-page/settings-page';
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <LandingPage />
-          </Route>
-          <Route path="/dashboard">
-            <DashboardPage />
-          </Route>
-          <Route path="/competitions">
-            <CompetitionsPage />
-          </Route>
-          <Route path="/teams">
-            <HomePage />
-          </Route>
-          <Route path="/settings">
-            <SettingsPage />
-          </Route>
-        </Switch>
-      </Router>
+      <UserProvider>
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <LandingPage />
+            </Route>
+            <Route path="/dashboard">
+              <DashboardPage />
+            </Route>
+            <Route path="/competitions/:cid">
+              <CompetitionsPage />
+            </Route>
+            <Route path="/teams">
+              <HomePage />
+            </Route>
+            <Route path="/settings">
+              <SettingsPage />
+            </Route>
+          </Switch>
+        </Router>
+      </UserProvider>
     </AuthProvider>
   );
 }

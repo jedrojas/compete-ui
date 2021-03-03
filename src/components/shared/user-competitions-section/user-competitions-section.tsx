@@ -1,22 +1,21 @@
 import './user-competitions-section.scss';
 
-import { useAuth0 } from '@auth0/auth0-react';
 import React, { useState } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 import BaseNeoButton from '../../bases/base-neo-button/base-neo-button';
 import BaseNeoCard from '../../bases/base-neo-card/base-neo-card';
-import { useUserDashboardCompetitions } from '../../hooks/user-dashboard-hooks';
+import { useDashboardCompetitions } from '../../hooks/user-dashboard-hooks';
 import { generateColor } from '../../utils/generate-color';
 import NewCompetitionModal from '../new-competition-modal/new-competition-modal';
 
 export interface IUserCompetitionsSection {}
 
 export const UserCompetitionsSection: React.FC<IUserCompetitionsSection> = () => {
+  const history = useHistory();
   const [showNewCompetitionModal, setShowNewCompetitionModal] = useState(false);
-  const { user } = useAuth0();
-
-  const { data, loading, error } = useUserDashboardCompetitions(user?.sub);
+  const { dashboardCompetitions } = useDashboardCompetitions();
 
   return (
     <BaseNeoCard className="m-2 align-items-center overflow-auto" height="10vh">
@@ -29,8 +28,8 @@ export const UserCompetitionsSection: React.FC<IUserCompetitionsSection> = () =>
             +
           </Button>
         </span>
-        {data &&
-          data.map((competition) => (
+        {dashboardCompetitions &&
+          dashboardCompetitions.map((competition) => (
             <span
               className="d-flex h-100 align-items-center mx-2"
               style={{ minWidth: "250px" }}
@@ -38,7 +37,7 @@ export const UserCompetitionsSection: React.FC<IUserCompetitionsSection> = () =>
             >
               <BaseNeoButton
                 className="d-flex h-75 w-100 align-items-center mx-2"
-                // style={{ borderRadius: "2em" }}
+                onClick={() => history.push(`/competitions/${competition.id}`)}
               >
                 {/* show icon if exists, else show unique color */}
                 {/* TODO: let user select color if they want */}

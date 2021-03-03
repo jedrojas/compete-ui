@@ -34,7 +34,7 @@ export const ReviewStep: React.FC<NewCompetitionStepProps> = ({
       <Modal.Body>
         <div>{competitionName.toString()}</div>
         <div>{competitionType.toString()}</div>
-        <div>{startDate.toString()}</div>
+        <div>{startDate?.toString() ?? "null"}</div>
         <div>{endDate?.toString() ?? "null"}</div>
       </Modal.Body>
       <Modal.Footer className="cursor-pointer justify-content-between">

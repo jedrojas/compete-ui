@@ -1,6 +1,6 @@
 import './new-competition-modal.scss';
 
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 
 import { INewCompetitionStep } from '../../../models.ts/enums';
 import BaseModal from '../base-modal/base-modal';
@@ -23,8 +23,8 @@ export const NewCompetitionModal: React.FC<INewCompetitionModal> = ({
   const [competitionType, setCompetitionType] = useState<ICompetitionType>(
     ICompetitionType.TEAM
   );
-  const [startDate, setStartDate] = useState<Date>(new Date());
-  const [endDate, setEndDate] = useState<Date>(new Date());
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [endDate, setEndDate] = useState<Date | null>(null);
   const [competitionName, setCompetitionName] = useState<string>("");
 
   const [step, setStep] = useState<INewCompetitionStep>(
