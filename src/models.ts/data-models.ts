@@ -4,12 +4,14 @@ import { ICompetitionType } from '../components/shared/new-competition-modal/new
 import { CompetitionStatus, INewCompetitionStep } from './enums';
 
 export interface IActivity {
-  id: number;
-  distance: number;
+  id?: string;
+  strava_id?: string;
+  name?: string;
+  start_date?: Date;
   end_date: Date;
+  distance?: number;
   type: string;
   points: number;
-  name?: string;
 }
 
 export interface ILeaderboardLI {
@@ -59,3 +61,19 @@ export interface ICompetition {
 }
 
 export type IJoinableCompetition = ICompetition & { is_joined: boolean };
+
+export interface IStravaTokenPayload {
+  client_id: string;
+  client_secret: string;
+  code: string;
+  grant_type: string;
+}
+
+export interface IStravaTokenResponse {
+  token_type: string;
+  expires_at: string;
+  expires_in: string;
+  refresh_token: string;
+  access_token: string;
+  athlete: any;
+}

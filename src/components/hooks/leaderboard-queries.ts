@@ -2,7 +2,12 @@ import { useMemo } from 'react';
 
 import { ILeaderboardLI } from '../../models.ts/data-models';
 import { useCompetitionState } from '../pages/competitions-page/competition-context';
-import { useFetchPost } from './fetch';
+import { usePost } from './fetch';
+
+interface ILeaderboardPayload {
+  start_date: Date | undefined;
+  end_date: Date | undefined;
+}
 
 export const useLeaderboard = (type: string) => {
   const { cid, start_date, end_date } = useCompetitionState();
@@ -11,10 +16,10 @@ export const useLeaderboard = (type: string) => {
     return { start_date, end_date };
   }, [end_date, start_date]);
 
-  const { data, loading, error } = useFetchPost<ILeaderboardLI[]>(
-    `http://localhost:3000/competition/${cid}/leaderboard/${type}`,
-    payload
-  );
+  const { data, loading, error } = usePost<
+    ILeaderboardLI[],
+    ILeaderboardPayload
+  >(`http://localhost:3000/competition/${cid}/leaderboard/${type}`, payload);
 
   return { data, loading, error };
 };

@@ -6,11 +6,9 @@ export const useActivityWidgetData = (cId: string) => {
   const [points, setPoints] = useState<number>();
   const [numActivities, setNumActivities] = useState<number>(0);
 
-  const {
-    data: activities,
-    loading,
-    error,
-  } = useUserActivitiesByCompetitionQuery(cId);
+  const { data, loading, error } = useUserActivitiesByCompetitionQuery(cId);
+
+  const activities = data?.errorMessage ? null : data;
 
   useEffect(() => {
     setPoints(

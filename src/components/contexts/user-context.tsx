@@ -1,18 +1,21 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import React, { useMemo } from 'react';
 
-import { useFetch } from '../hooks/fetch';
+import { useGet } from '../hooks/fetch';
+import { useStravaAccessCode } from '../hooks/strava-hooks';
 
 interface IUserState {
   first_name?: string;
   last_name?: string;
   competitions?: string[];
+  is_synced_with_strava?: boolean;
 }
 
 const UserStateContext = React.createContext<IUserState>({} as IUserState);
 
 const useUserContext = () => {
-  const { competitions } = useUserQuery();
+  useStravaAccessCode();
+  const { competitions, is_synced_with_strava } = useUserQuery();
 
   return useMemo(
     () => ({
@@ -42,12 +45,14 @@ const useUserState = () => {
 
 const useUserQuery = () => {
   const { user } = useAuth0();
-  const { data } = useFetch<IUserState>(
-    `http://localhost:3000/user/${user?.sub}`,
-    "GET"
+  const { data } = useGet<IUserState>(
+    `http://localhost:3000/user/${user?.sub}`
   );
 
-  return { competitions: data?.competitions ?? [] };
+  return {
+    competitions: data?.competitions ?? [],
+    is_synced_with_strava: data?.is_synced_with_strava,
+  };
 };
 
 export { UserProvider, useUserState };

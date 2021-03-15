@@ -8,7 +8,7 @@ import BaseNeoCard from '../../bases/base-neo-card/base-neo-card';
 import UserActivity from '../user-activity/user-activity';
 
 export interface IUserActivities {
-  activities?: IActivity[];
+  activities: IActivity[] | null;
 }
 
 export const UserActivities: React.FC<IUserActivities> = ({ activities }) => {

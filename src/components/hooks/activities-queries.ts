@@ -1,15 +1,29 @@
 import { useAuth0 } from '@auth0/auth0-react';
+import { useCallback } from 'react';
 
 import { IActivity } from '../../models.ts/data-models';
-import { useFetch } from './fetch';
+import { useGet } from './fetch';
 
-export const useUserActivitiesByCompetitionQuery = (cId: string) => {
+export const useUserActivities = () => {
   const { user } = useAuth0();
 
-  const { data, loading, error } = useFetch<IActivity[]>(
-    `http://localhost:3000/user/${user?.sub}/competition/${cId}/points`,
-    "GET"
+  const { data, loading, error } = useGet<IActivity[]>(
+    `http://localhost:3000/user/${user?.sub}/activities`
   );
 
   return { data, loading, error };
 };
+
+export const useUserActivitiesByCompetitionQuery = (cId: string) => {
+  const { user } = useAuth0();
+
+  const { data, loading, error } = useGet<IActivity[] & IError>(
+    `http://localhost:3000/user/${user?.sub}/competition/${cId}/points`
+  );
+
+  return { data, loading, error };
+};
+
+export interface IError {
+  errorMessage?: string;
+}

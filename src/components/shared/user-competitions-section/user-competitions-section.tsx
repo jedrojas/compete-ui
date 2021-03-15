@@ -33,7 +33,7 @@ export const UserCompetitionsSection: React.FC<IUserCompetitionsSection> = () =>
             <span
               className="d-flex h-100 align-items-center mx-2"
               style={{ minWidth: "250px" }}
-              id={competition.id}
+              key={competition.id}
             >
               <BaseNeoButton
                 className="d-flex h-75 w-100 align-items-center mx-2"

@@ -15,14 +15,17 @@ import SettingsPage from './components/pages/settings-page/settings-page';
 function App() {
   return (
     <AuthProvider>
-      <UserProvider>
-        <Router>
+      <Router>
+        <UserProvider>
           <Switch>
             <Route exact path="/">
               <LandingPage />
             </Route>
             <Route path="/dashboard">
               <DashboardPage />
+            </Route>
+            <Route exact path="/competitions">
+              <CompetitionsPage />
             </Route>
             <Route path="/competitions/:cid">
               <CompetitionsPage />
@@ -34,8 +37,8 @@ function App() {
               <SettingsPage />
             </Route>
           </Switch>
-        </Router>
-      </UserProvider>
+        </UserProvider>
+      </Router>
     </AuthProvider>
   );
 }

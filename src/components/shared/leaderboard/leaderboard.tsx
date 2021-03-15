@@ -8,7 +8,7 @@ import LeaderboardAthleteLineItem from '../leaderboard-athlete-line-item/leaderb
 import LeaderboardTeamLineItem from '../leaderboard-team-line-item/leaderboard-team-line-item';
 
 export interface ILeaderboard {
-  rows?: ILeaderboardLI[];
+  rows: ILeaderboardLI[] | null;
   type: string;
 }
 

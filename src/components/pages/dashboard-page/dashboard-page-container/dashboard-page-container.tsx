@@ -9,7 +9,7 @@ export interface IHomePageContainer {}
 export const HomePageContainer: React.FC<IHomePageContainer> = ({
   children,
 }) => {
-  return <BasePageContainer>{children}</BasePageContainer>;
+  return <BasePageContainer flexRow>{children}</BasePageContainer>;
 };
 
 export default HomePageContainer;
