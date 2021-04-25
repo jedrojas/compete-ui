@@ -17,7 +17,7 @@ const CompetitionStateContext = React.createContext<ICompetitionState>(
   {} as ICompetitionState
 );
 
-const useStatus = (start_date?: Date, end_date?: Date) => {
+export const useStatus = (start_date?: Date, end_date?: Date) => {
   const [status, setStatus] = useState<CompetitionStatus>(
     CompetitionStatus.NOT_SET
   );
@@ -42,7 +42,6 @@ const useStatus = (start_date?: Date, end_date?: Date) => {
 };
 
 const useCompetitionContext = () => {
-  // get cid from useCompetitionById
   const { cid } = useParams<{ cid: string }>();
   const { start_date, end_date, name, type } = useCompetitionById(cid);
   const status = useStatus(start_date, end_date);

@@ -4,12 +4,12 @@ import React from 'react';
 
 import BasePageContainer from '../../../bases/base-page-container/base-page-container';
 
-export interface IHomePageContainer {}
+export interface IHCompetitionsPageContainer {}
 
-export const HomePageContainer: React.FC<IHomePageContainer> = ({
+export const HCompetitionsPageContainer: React.FC<IHCompetitionsPageContainer> = ({
   children,
 }) => {
   return <BasePageContainer>{children}</BasePageContainer>;
 };
 
-export default HomePageContainer;
+export default HCompetitionsPageContainer;

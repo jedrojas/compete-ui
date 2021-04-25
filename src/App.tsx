@@ -11,6 +11,7 @@ import DashboardPage from './components/pages/dashboard-page/dashboard-page';
 import HomePage from './components/pages/home-page/home-page';
 import { LandingPage } from './components/pages/landing-page/landing-page';
 import SettingsPage from './components/pages/settings-page/settings-page';
+import UserCompetitionsPage from './components/pages/user-competitions-page/user-competitions-page';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
               <DashboardPage />
             </Route>
             <Route exact path="/competitions">
-              <CompetitionsPage />
+              <UserCompetitionsPage />
             </Route>
             <Route path="/competitions/:cid">
               <CompetitionsPage />
