@@ -24,6 +24,7 @@ export function useNewCompetitionStep(step: INewCompetitionStep) {
   return Step;
 }
 
+// use usePost hook here
 export function useCreateCompetition() {
   const createCompetition = (
     userId: string,

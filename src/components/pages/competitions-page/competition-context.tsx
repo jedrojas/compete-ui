@@ -17,6 +17,7 @@ const CompetitionStateContext = React.createContext<ICompetitionState>(
   {} as ICompetitionState
 );
 
+// Move this into a separate hooks file
 const useStatus = (start_date?: Date, end_date?: Date) => {
   const [status, setStatus] = useState<CompetitionStatus>(
     CompetitionStatus.NOT_SET
@@ -45,6 +46,8 @@ const useCompetitionContext = () => {
   // get cid from useCompetitionById
   const { cid } = useParams<{ cid: string }>();
   const { start_date, end_date, name, type } = useCompetitionById(cid);
+  // declare current uid here
+  // const { isUserAdmin } = useGetAdminStatus(cid, uid)
   const status = useStatus(start_date, end_date);
 
   return useMemo(
