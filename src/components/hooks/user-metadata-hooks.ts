@@ -3,7 +3,8 @@ import fetch from 'node-fetch';
 import { useEffect, useState } from 'react';
 
 export const useGetUserMetaData = () => {
-  const { user, getAccessTokenSilently } = useAuth0();
+  const { user } = useAuth0();
+  const accessToken = localStorage.getItem("access_token");
   //   TODO: type this
   const [userInfo, setUserInfo] = useState<any>();
   const [loading, setLoading] = useState(false);
@@ -15,10 +16,6 @@ export const useGetUserMetaData = () => {
     setLoading(true);
     const fetchData = async () => {
       try {
-        const accessToken = await getAccessTokenSilently({
-          audience: `${domainName}/api/v2/`,
-          scope: `read:current_user update:current_user_metadata`,
-        });
         const getMetadata = await fetch(
           `${domainName}/api/v2/users/${user.sub}`,
           {
@@ -45,7 +42,7 @@ export const useGetUserMetaData = () => {
     if (user) {
       fetchData();
     }
-  }, [getAccessTokenSilently, user]);
+  }, [accessToken, user]);
 
   return { userInfo, loading };
 };

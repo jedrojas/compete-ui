@@ -24,22 +24,23 @@ export function useNewCompetitionStep(step: INewCompetitionStep) {
   return Step;
 }
 
-// use usePost hook here
+// TODO - Jed: use usePost hook here
 export function useCreateCompetition() {
+  // TODO - Jed: Consider passing arguments as an object
   const createCompetition = (
-    userId: string,
     name: string,
     type: string,
     start?: Date | null,
     end?: Date | null
   ) => {
     const payload = {
-      user_id: userId,
       name,
       type,
       start_date: start,
       end_date: end,
     };
+
+    const accessToken = localStorage.getItem("access_token");
 
     return new Promise<ICompetition>(async (resolve, reject) => {
       try {
@@ -47,6 +48,7 @@ export function useCreateCompetition() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
           },
           body: JSON.stringify(payload),
         })

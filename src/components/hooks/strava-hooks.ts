@@ -19,7 +19,7 @@ export function useStravaAccessCode() {
   const post = usePostCallback<IStravaTokenResponse, IStravaTokenPayload>();
 
   if (code && typeof code === "string" && state === "strava_auth_code") {
-    console.log("--code is--", code);
+    // console.log("--code is--", code);
     const payload = {
       client_id: STRAVA_CLIENT_ID,
       client_secret: STRAVA_CLIENT_SECRET,
@@ -31,7 +31,7 @@ export function useStravaAccessCode() {
     // Retrieve from here if needed in the future
     post("https://www.strava.com/oauth/token", payload)
       .then((data) => {
-        console.log("--DATA IS--", data);
+        // console.log("--DATA IS--", data);
         localStorage.setItem("stravaAccessToken", data.access_token);
         localStorage.setItem("stravaRefreshToken", data.refresh_token);
         history.push("/dashboard");

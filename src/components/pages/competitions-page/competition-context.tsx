@@ -43,6 +43,14 @@ const useStatus = (start_date?: Date, end_date?: Date) => {
 };
 
 const useCompetitionContext = () => {
+  // API should take in the following inputs:
+  //    cid, uid?
+  // API call should return the following
+  //    competition data: start/end date, name, type, status
+  //    participant data: participants & points
+  //    user data (if applicable): isAdmin, isParticipant, points
+  // Split this into separate APIs: One gets comp data and participant data, other gets user data related to comp
+
   // get cid from useCompetitionById
   const { cid } = useParams<{ cid: string }>();
   const { start_date, end_date, name, type } = useCompetitionById(cid);

@@ -2,7 +2,6 @@ import './review-step.scss';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 
-import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
@@ -21,7 +20,6 @@ export const ReviewStep: React.FC<NewCompetitionStepProps> = ({
   setStepStack,
 }) => {
   const { createCompetition } = useCreateCompetition();
-  const { user } = useAuth0();
   const history = useHistory();
 
   return (
@@ -55,7 +53,6 @@ export const ReviewStep: React.FC<NewCompetitionStepProps> = ({
           className="w-25 p-0"
           onClick={() =>
             createCompetition(
-              user.sub,
               competitionName,
               competitionType,
               startDate,

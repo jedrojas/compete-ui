@@ -11,7 +11,7 @@ export interface IUserDashboardActivityWidget {}
 export const UserDashboardActivityWidget: React.FC<IUserDashboardActivityWidget> = () => {
   const { data } = useUserActivities();
 
-  console.log("--All user activities--", data);
+  // console.log("--All user activities--", data);
 
   return (
     <BaseWidget>
