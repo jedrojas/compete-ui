@@ -4,7 +4,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import { ICompetition } from '../../../models.ts/data-models';
+import { ICompetition } from '../../../models/data-models';
 import NeoButton from '../../bases/neo-button/neo-button';
 import TimeLeft from '../time-left/time-left';
 

@@ -3,7 +3,7 @@ import './dates-not-set.scss';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 
-import { CompetitionStatusComponentProps } from '../../../../models.ts/data-models';
+import { CompetitionStatusComponentProps } from '../../../../models/data-models';
 
 export const DatesNotSet: React.FC<CompetitionStatusComponentProps> = () => {
   return (

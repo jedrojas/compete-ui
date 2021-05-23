@@ -1,7 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from 'react';
 
-import { ICompetition, IJoinableCompetition } from '../../models.ts/data-models';
+import { ICompetition, IJoinableCompetition } from '../../models/data-models';
 
 export const useAllCompetitionsQuery = () => {
   const [data, setData] = useState<ICompetition[]>();

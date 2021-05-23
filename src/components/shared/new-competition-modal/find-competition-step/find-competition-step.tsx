@@ -4,7 +4,7 @@ import React from 'react';
 import { Col, Modal, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
-import { NewCompetitionStepProps } from '../../../../models.ts/data-models';
+import { NewCompetitionStepProps } from '../../../../models/data-models';
 import BaseNeoButton from '../../../bases/base-neo-button/base-neo-button';
 import { useJoinableCompetitionsQuery } from '../../../hooks/competition-hooks';
 import { generateColor } from '../../../utils/generate-color';

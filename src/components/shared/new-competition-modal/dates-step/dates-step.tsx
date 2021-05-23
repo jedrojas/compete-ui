@@ -6,8 +6,8 @@ import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import { DateRange } from 'react-date-range';
 
-import { NewCompetitionStepProps } from '../../../../models.ts/data-models';
-import { INewCompetitionStep } from '../../../../models.ts/enums';
+import { NewCompetitionStepProps } from '../../../../models/data-models';
+import { INewCompetitionStep } from '../../../../models/enums';
 
 export const DatesStep: React.FC<NewCompetitionStepProps> = ({
   stepStack,

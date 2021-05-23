@@ -6,7 +6,7 @@ import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
-import { NewCompetitionStepProps } from '../../../../models.ts/data-models';
+import { NewCompetitionStepProps } from '../../../../models/data-models';
 import BaseNeoButton from '../../../bases/base-neo-button/base-neo-button';
 import { useCreateCompetition } from '../hooks';
 

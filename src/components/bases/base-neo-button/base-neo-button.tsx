@@ -13,6 +13,7 @@ export interface IBaseNeoButton {
   height?: string;
   // TODO: type this
   style?: any;
+  title?: string;
 }
 
 export const BaseNeoButton: React.FC<IBaseNeoButton> = ({
@@ -25,6 +26,7 @@ export const BaseNeoButton: React.FC<IBaseNeoButton> = ({
   width = "100%",
   height = "100%",
   style,
+  title,
 }) => {
   const [isPressed, setIsPressed] = useState(pressed);
 
@@ -39,6 +41,7 @@ export const BaseNeoButton: React.FC<IBaseNeoButton> = ({
 
   return (
     <div
+      title={title}
       className={classnames(
         "text-center base-neo-btn cursor-pointer p-2",
         className,

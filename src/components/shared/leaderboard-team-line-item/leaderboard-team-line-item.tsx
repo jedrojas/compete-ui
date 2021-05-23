@@ -6,7 +6,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 
 import monstarsImg from '../../../assets/Monstars.jpg';
-import { ILeaderboardLI } from '../../../models.ts/data-models';
+import { ILeaderboardLI } from '../../../models/data-models';
 
 export interface ILeaderboardTeamLineItem {
   data: ILeaderboardLI;
