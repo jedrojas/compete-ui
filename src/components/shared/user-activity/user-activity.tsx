@@ -6,7 +6,7 @@ import format from 'date-fns/format';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 
-import { IActivity, sbrIconMap } from '../../../models.ts/data-models';
+import { IActivity, sbrIconMap } from '../../../models/data-models';
 
 export interface IUserActivity {
   activity: IActivity;

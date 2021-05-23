@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { ILeaderboardLI } from '../../models.ts/data-models';
+import { ILeaderboardLI } from '../../models/data-models';
 import { useCompetitionState } from '../pages/competitions-page/competition-context';
 import { usePost } from './fetch';
 

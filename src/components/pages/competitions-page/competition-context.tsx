@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { CompetitionStatus } from '../../../models.ts/enums';
+import { CompetitionStatus } from '../../../models/enums';
 import { useCompetitionById } from '../../hooks/competitions-queries';
 
 interface ICompetitionState {

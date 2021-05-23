@@ -3,7 +3,7 @@ import './user-activities.scss';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 
-import { IActivity } from '../../../models.ts/data-models';
+import { IActivity } from '../../../models/data-models';
 import BaseNeoCard from '../../bases/base-neo-card/base-neo-card';
 import UserActivity from '../user-activity/user-activity';
 

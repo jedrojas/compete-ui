@@ -3,7 +3,7 @@ import './competition-in-progress.scss';
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 
-import { CompetitionStatusComponentProps } from '../../../../models.ts/data-models';
+import { CompetitionStatusComponentProps } from '../../../../models/data-models';
 import { useCompetitionState } from '../../../pages/competitions-page/competition-context';
 
 export const CompetitionInProgress: React.FC<CompetitionStatusComponentProps> = () => {

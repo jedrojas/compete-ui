@@ -2,7 +2,7 @@ import './time-left.scss';
 
 import React from 'react';
 
-import { CompetitionStatus } from '../../../models.ts/enums';
+import { CompetitionStatus } from '../../../models/enums';
 import { useStatus } from '../../pages/user-competitions-page/user-competition-context';
 
 export interface ITimeLeft {

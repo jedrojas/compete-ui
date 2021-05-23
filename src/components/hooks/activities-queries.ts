@@ -1,7 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { useCallback } from 'react';
 
-import { IActivity } from '../../models.ts/data-models';
+import { IActivity } from '../../models/data-models';
 import { useGet } from './fetch';
 
 export const useUserActivities = () => {

@@ -4,8 +4,8 @@ import React from 'react';
 import { Modal, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
-import { NewCompetitionStepProps } from '../../../../models.ts/data-models';
-import { INewCompetitionStep } from '../../../../models.ts/enums';
+import { NewCompetitionStepProps } from '../../../../models/data-models';
+import { INewCompetitionStep } from '../../../../models/enums';
 import BaseNeoButton from '../../../bases/base-neo-button/base-neo-button';
 
 export const NameAndIconStep: React.FC<NewCompetitionStepProps> = ({

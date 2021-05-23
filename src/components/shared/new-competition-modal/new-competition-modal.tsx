@@ -2,7 +2,7 @@ import './new-competition-modal.scss';
 
 import React, { useState } from 'react';
 
-import { INewCompetitionStep } from '../../../models.ts/enums';
+import { INewCompetitionStep } from '../../../models/enums';
 import BaseModal from '../base-modal/base-modal';
 import { useNewCompetitionStep } from './hooks';
 

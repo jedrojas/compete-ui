@@ -4,7 +4,7 @@ import { useCallback, useMemo, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 
 import { STRAVA_CLIENT_ID, STRAVA_CLIENT_SECRET } from '../../config';
-import { IStravaTokenPayload, IStravaTokenResponse } from '../../models.ts/data-models';
+import { IStravaTokenPayload, IStravaTokenResponse } from '../../models/data-models';
 import { usePostCallback } from './fetch';
 
 export interface SyncStravaActivitiesPayload {

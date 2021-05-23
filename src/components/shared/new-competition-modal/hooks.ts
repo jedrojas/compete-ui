@@ -1,7 +1,7 @@
 import { useMemo, useRef } from 'react';
 
-import { ICompetition, NewCompetitionStepConfig } from '../../../models.ts/data-models';
-import { INewCompetitionStep } from '../../../models.ts/enums';
+import { ICompetition, NewCompetitionStepConfig } from '../../../models/data-models';
+import { INewCompetitionStep } from '../../../models/enums';
 import DatesStep from './dates-step/dates-step';
 import FindCompetitionStep from './find-competition-step/find-competition-step';
 import JoinOrCreateStep from './join-or-create-step/join-or-create-step';

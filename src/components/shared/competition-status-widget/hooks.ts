@@ -1,7 +1,7 @@
 import { useMemo, useRef } from 'react';
 
-import { CompetitionStatusConfig } from '../../../models.ts/data-models';
-import { CompetitionStatus } from '../../../models.ts/enums';
+import { CompetitionStatusConfig } from '../../../models/data-models';
+import { CompetitionStatus } from '../../../models/enums';
 import CompetitionFinished from './competition-finished/competition-finished';
 import CompetitionInProgress from './competition-in-progress/competition-in-progress';
 import CompetitionNotStarted from './competition-not-started/competition-not-started';
