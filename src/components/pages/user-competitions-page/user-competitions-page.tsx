@@ -40,21 +40,3 @@ export const UserCompetitionsPage: React.FC<IUserCompetitionsPage> = () => {
 };
 
 export default UserCompetitionsPage;
-
-export interface IMultiStepModalPayload {
-  name?: string;
-  type?: string;
-  startDate?: Date;
-  endDate?: Date;
-}
-
-export interface ICreateCompetitionPayload {
-  name?: string;
-  type?: string;
-  startDate?: Date;
-  endDate?: Date;
-}
-
-export type multiStepModalPayloadTypes =
-  | IMultiStepModalPayload
-  | ICreateCompetitionPayload;

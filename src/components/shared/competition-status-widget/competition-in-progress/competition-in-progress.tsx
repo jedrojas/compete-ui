@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 
 import { CompetitionStatusComponentProps } from '../../../../models/data-models';
-import { useCompetitionState } from '../../../pages/competitions-page/competition-context';
+import { useCompetitionState } from '../../../contexts/competition-context';
 
 export const CompetitionInProgress: React.FC<CompetitionStatusComponentProps> = () => {
   const [time, setTime] = useState(new Date());

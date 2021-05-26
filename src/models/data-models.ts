@@ -60,6 +60,13 @@ export interface ICompetition {
   end_date?: Date;
 }
 
+export interface IUserCompetitionData {
+  isUserAdmin: boolean;
+  isUserParticipant: boolean;
+  activities: IActivity[];
+  points: number;
+}
+
 export type IJoinableCompetition = ICompetition & { is_joined: boolean };
 
 export interface IStravaTokenPayload {
@@ -77,3 +84,12 @@ export interface IStravaTokenResponse {
   access_token: string;
   athlete: any;
 }
+
+export interface ICreateCompetitionPayload {
+  name?: string | null;
+  type?: string | null;
+  startDate?: Date;
+  endDate?: Date;
+}
+
+export type multiStepModalPayloadTypes = ICreateCompetitionPayload;

@@ -4,7 +4,7 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 
 import BaseWidget from '../../bases/base-widget/base-widget';
-import { useCompetitionState } from '../../pages/competitions-page/competition-context';
+import { useCompetitionState } from '../../contexts/competition-context';
 import { useCompetitionStatusComponent } from './hooks';
 
 export interface ICompetitionStatusWidget {}

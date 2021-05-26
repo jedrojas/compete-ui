@@ -4,11 +4,13 @@ import 'react-date-range/dist/theme/default.css';
 
 import React from 'react';
 import { Modal } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
 
 import { NewCompetitionStepProps } from '../../../../models/data-models';
 import BaseNeoButton from '../../../bases/base-neo-button/base-neo-button';
-import { useCreateCompetition } from '../hooks';
+
+// import { useHistory } from 'react-router-dom';
+
+// import { useCreateCompetition } from '../hooks';
 
 export const ReviewStep: React.FC<NewCompetitionStepProps> = ({
   competitionName,
@@ -19,8 +21,8 @@ export const ReviewStep: React.FC<NewCompetitionStepProps> = ({
   stepStack,
   setStepStack,
 }) => {
-  const { createCompetition } = useCreateCompetition();
-  const history = useHistory();
+  // const { createCompetition } = useCreateCompetition();
+  // const history = useHistory();
 
   return (
     <>
@@ -51,14 +53,14 @@ export const ReviewStep: React.FC<NewCompetitionStepProps> = ({
 
         <BaseNeoButton
           className="w-25 p-0"
-          onClick={() =>
-            createCompetition(
-              competitionName,
-              competitionType,
-              startDate,
-              endDate
-            ).then((data) => history.push(`competitions/${data.id}`))
-          }
+          // onClick={() =>
+          // createCompetition({
+          //   competitionName,
+          //   competitionType,
+          //   startDate,
+          //   endDate,
+          // }).then((data) => history.push(`competitions/${data.id}`))
+          // }
         >
           Submit
         </BaseNeoButton>

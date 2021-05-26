@@ -24,7 +24,10 @@ export const get = async <T>(
   return (await res.json()) as T;
 };
 
-export const useGet = <D>(url: string) => {
+export const useGet = <D>(
+  url: string,
+  addedHeaders?: Record<string, string>
+) => {
   interface IError {
     errorMessage?: string;
   }
@@ -36,14 +39,13 @@ export const useGet = <D>(url: string) => {
   useEffect(() => {
     setLoading(true);
 
-    // add headers here if needed
-    const headers = {};
+    const headers = { ...addedHeaders };
 
     get<D & IError>(url, headers)
       .then(setData)
       .catch(setError)
       .finally(() => setLoading(false));
-  }, [url]);
+  }, [addedHeaders, url]);
 
   return { data, loading, error };
 };
@@ -62,9 +64,9 @@ export const useGetCallback = () => {
   return getFn;
 };
 
-export const post = async <T>(
+export const post = async <T, P>(
   url: string,
-  payload: unknown,
+  payload: P,
   requestHeaders: Record<string, string>
 ) => {
   const headers = new Headers({
@@ -93,7 +95,7 @@ export const usePost = <D, P>(url: string, payload: P) => {
     // add headers here if needed
     const headers = {};
 
-    post<D>(url, payload, headers)
+    post<D, P>(url, payload, headers)
       .then(setData)
       .catch(setError)
       .finally(() => setLoading(false));
@@ -103,11 +105,14 @@ export const usePost = <D, P>(url: string, payload: P) => {
 };
 
 export const usePostCallback = <D, P>() => {
-  const postFn = useCallback((url: string, payload: P) => {
-    const headers = {}; // add headers here if needed
+  const postFn = useCallback(
+    (url: string, payload: P, addedHeaders?: Record<string, string>) => {
+      const headers = { ...addedHeaders };
 
-    return post<D>(url, payload, headers);
-  }, []);
+      return post<D, P>(url, payload, headers);
+    },
+    []
+  );
 
   return postFn;
 };

@@ -19,7 +19,6 @@ export function useStravaAccessCode() {
   const post = usePostCallback<IStravaTokenResponse, IStravaTokenPayload>();
 
   if (code && typeof code === "string" && state === "strava_auth_code") {
-    // console.log("--code is--", code);
     const payload = {
       client_id: STRAVA_CLIENT_ID,
       client_secret: STRAVA_CLIENT_SECRET,
@@ -27,7 +26,7 @@ export function useStravaAccessCode() {
       grant_type: "authorization_code",
     };
 
-    // TODO: this also gives expiration date.
+    // TODO - Jed: this also gives expiration date.
     // Retrieve from here if needed in the future
     post("https://www.strava.com/oauth/token", payload)
       .then((data) => {

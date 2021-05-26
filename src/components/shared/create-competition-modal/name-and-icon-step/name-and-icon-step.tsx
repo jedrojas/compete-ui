@@ -3,7 +3,7 @@ import './name-and-icon-step.scss';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classnames from 'classnames';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Modal, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
@@ -57,7 +57,10 @@ export const NameAndIconStep: React.FC<NameAndIconStepProps> = ({
           className="cursor-pointer ml-auto"
           disabled={charsUsed > 40 || charsUsed === 0}
           onClick={() => {
-            setPayload({ ...payload, name: watch("competitionName") ?? "" });
+            setPayload({
+              ...payload,
+              name: watch("competitionName") ?? "",
+            });
             setStepCount((count) => count + 1);
           }}
         >

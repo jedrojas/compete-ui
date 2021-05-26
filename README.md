@@ -62,9 +62,9 @@ User
     ├ ⎯ As a User, I want to be able to search for Competitions I could join (Separate Page)
 Competitions
     ├ ⎯ Create Competitions
-        ├ ⎯ As a User, I want to be able to create a competition
+        ├ ⎯ As a User, I want to be able to create a competition ✔️
         ├ ⎯ As a User, when I start creating a competition, if I click outside of the create modal, I should be given a warning message that unsaved data may be lost
-        ├ ⎯ As a User, when I create a competition, I want to be made admin
+        ├ ⎯ As a User, when I create a competition, I want to be made admin (CURRENT)
     ├ ⎯ Competition Admin Permissions
         ├ ⎯ As a Competition Admin, I want the ability to set/update point values for b/s/r
         ├ ⎯ As a Competition Admin, I want the ability to set/update competition start/end dates

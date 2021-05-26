@@ -17,8 +17,6 @@ const useUserContext = () => {
   useStravaAccessCode();
   const { competitions, is_synced_with_strava, user } = useUserQuery();
 
-  console.log("--user is--", user);
-
   return useMemo(
     () => ({
       competitions,
