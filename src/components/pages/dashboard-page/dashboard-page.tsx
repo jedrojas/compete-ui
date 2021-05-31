@@ -5,13 +5,12 @@ import { Col, Modal, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
 import BaseNeoButton from '../../bases/base-neo-button/base-neo-button';
+import BasePageLayout from '../../bases/base-page-layout/base-page-layout';
 import { useFirstAndLastNameCheck } from '../../hooks/first-and-last-name-check-hooks';
 import { useGetStravaActivities } from '../../hooks/strava-hooks';
 import { useUpdateUserMetadata } from '../../hooks/user-metadata-hooks';
-import SideBar from '../../shared/side-bar/side-bar';
 import UserCompetitionsSection from '../../shared/user-competitions-section/user-competitions-section';
 import UserDashboardActivityWidget from '../../shared/user-dashboard-activity-widget/user-dashboard-activity-widget';
-import DashboardPageContainer from './dashboard-page-container/dashboard-page-container';
 
 export interface IDashboardPage {}
 
@@ -28,8 +27,7 @@ export const DashboardPage: React.FC<IDashboardPage> = () => {
   const { getStravaActivities, loading } = useGetStravaActivities();
 
   return (
-    <DashboardPageContainer>
-      <SideBar />
+    <BasePageLayout>
       <Col>
         <div>
           Things to add to this page: Competitions section (list comps, create
@@ -128,7 +126,7 @@ export const DashboardPage: React.FC<IDashboardPage> = () => {
           </Modal.Body>
         </Modal>
       </Col>
-    </DashboardPageContainer>
+    </BasePageLayout>
   );
 };
 

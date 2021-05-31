@@ -1,13 +1,12 @@
 import React from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 
+import BasePageLayout from '../../bases/base-page-layout/base-page-layout';
 import { useUserCompetitions } from '../../hooks/competitions-queries';
 import { useModal } from '../../hooks/modal-hooks';
 import CompetitionCard from '../../shared/competition-card/competition-card';
 import CreateCompetitionModal from '../../shared/create-competition-modal/create-competition-modal';
 import NoUserCompetitionsFoundMsg from '../../shared/no-user-competitions-found-msg/no-user-competitions-found-msg';
-import SideBar from '../../shared/side-bar/side-bar';
-import UserCompetitionsPageContainer from './user-competitions-page-container/user-competitions-page-container';
 
 export interface IUserCompetitionsPage {}
 
@@ -16,8 +15,7 @@ export const UserCompetitionsPage: React.FC<IUserCompetitionsPage> = () => {
   const [show, setShow] = useModal();
 
   return (
-    <UserCompetitionsPageContainer>
-      <SideBar />
+    <BasePageLayout>
       <Col>
         <Row className="mt-4">
           <h2>Competitions</h2>
@@ -35,7 +33,7 @@ export const UserCompetitionsPage: React.FC<IUserCompetitionsPage> = () => {
       </Col>
 
       <CreateCompetitionModal show={show} setShow={setShow} />
-    </UserCompetitionsPageContainer>
+    </BasePageLayout>
   );
 };
 

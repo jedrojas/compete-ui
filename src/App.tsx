@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { AuthProvider } from './components/contexts/AuthProvider';
 import { UserProvider } from './components/contexts/user-context';
-import CompetitionsPage from './components/pages/competitions-page/competitions-page';
+import CompetitionPage from './components/pages/competition-page/competition-page';
 import DashboardPage from './components/pages/dashboard-page/dashboard-page';
 import HomePage from './components/pages/home-page/home-page';
 import { LandingPage } from './components/pages/landing-page/landing-page';
@@ -28,8 +28,9 @@ function App() {
             <Route exact path="/competitions">
               <UserCompetitionsPage />
             </Route>
-            <Route path="/competitions/:cid">
-              <CompetitionsPage />
+            {/* TODO - Jed: update route path */}
+            <Route path="/competition/:cid">
+              <CompetitionPage />
             </Route>
             <Route path="/teams">
               <HomePage />

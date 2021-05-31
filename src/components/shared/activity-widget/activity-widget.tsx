@@ -4,8 +4,8 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 
 import BaseWidget from '../../bases/base-widget/base-widget';
-import { useCompetitionState } from '../../contexts/competition-context';
 import { useActivityWidgetData } from '../../hooks/activity-widget-hooks';
+import { useCompetitionState } from '../../pages/competition-page/competition-context';
 import PointsEarned from '../points-earned/points-earned';
 import UserActivitiesSummary from '../user-activities-summary/user-activities-summary';
 import UserActivities from '../user-activities/user-activities';

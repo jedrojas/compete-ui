@@ -54,6 +54,14 @@ https://reactjs.org/docs/testing-environments.html#end-to-end-tests-aka-e2e-test
 
 <!-- ✔️ ✖️ USE CASES ✖️ ✔️ -->
 
+z-index:
+0: default
+1: side bar
+<!--  -->
+
+
+<!-- ✔️ ✖️ USE CASES ✖️ ✔️ -->
+
 Login
     ├ ⎯ As a User, I want to be able to login to the application using my Google credentials, so that login is fast and easy ✔️
 User
@@ -64,7 +72,9 @@ Competitions
     ├ ⎯ Create Competitions
         ├ ⎯ As a User, I want to be able to create a competition ✔️
         ├ ⎯ As a User, when I start creating a competition, if I click outside of the create modal, I should be given a warning message that unsaved data may be lost
-        ├ ⎯ As a User, when I create a competition, I want to be made admin (CURRENT)
+        ├ ⎯ As a User, when I create a competition, I want to be made admin ✔️
+        ├ ⎯ As a User, when I create a competition, I want the option to join the competition as a participant as well, or just continue as Admin
+        ├ ⎯ As a Dev, I want to allow a competition's start/end dates to be updated UNTIL the competition has been started
     ├ ⎯ Competition Admin Permissions
         ├ ⎯ As a Competition Admin, I want the ability to set/update point values for b/s/r
         ├ ⎯ As a Competition Admin, I want the ability to set/update competition start/end dates
@@ -73,9 +83,12 @@ Competitions
         ├ ⎯ As a Competition Admin, I want the ability to make certain participants Admins for that competition
     ├ ⎯ Competition Admin Views
         ├ ⎯ As a Competition Admin, I want the option to join my competition as a participant
-        ├ ⎯ As a Competition Admin, I want to the option to view the competition in Admin View and in Participant View
+        ├ ⎯ As a Competition Admin, I want to the option to view the competition in Admin View and in Participant View (CURRENT)
     ├ ⎯ Join Competitions
         ├ ⎯ As a User, I want the ability to join a public competition
+Activities
+    ├ ⎯ Importing Activities
+        ├ ⎯ As a Dev, I want to import activities from Strava periodically, so the User does not have to manually import it every time they perform an activity
 Business POV
     ├ ⎯ As a PO, I want to allow users to purchase the premium version to allow more participants per competition (limit 50 before maybe), allow more competitions to be joined at once (limit 5 before maybe)
     ├ ⎯ As a PO, I want to give Users "Streak" awards, to incentivize Users to actively participate in their competitions

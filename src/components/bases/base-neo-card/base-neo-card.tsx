@@ -34,7 +34,7 @@ export const BaseNeoCard: React.FC<IBaseNeoCard> = ({
   return (
     <div
       className={classnames(
-        "d-flex base-neo-card",
+        "d-flex base-neo-card bg-light-grey",
         className,
         isMouseDown ? isMouseDownClass : "",
         {

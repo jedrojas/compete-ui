@@ -1,21 +1,17 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 
-import { CompetitionProvider } from '../../contexts/competition-context';
 import ActivityWidget from '../../shared/activity-widget/activity-widget';
 import CompetitionStatusWidget from '../../shared/competition-status-widget/competition-status-widget';
 import JoinCompetitionWidget from '../../shared/join-competition-widget/join-competition-widget';
 import LeaderboardWidget from '../../shared/leaderboard-widget/leaderboard-widget';
 import NavBar from '../../shared/nav-bar/nav-bar';
+import { CompetitionProvider } from '../competition-page/competition-context';
 import CompetitionsPageContainer from './competitions-page-container/competitions-page-container';
 
 export interface ICompetitionsPage {}
 
 export const CompetitionsPage: React.FC<ICompetitionsPage> = () => {
-  // <CompetitionAdminPage />
-  // <CompetitionParticipantPage />
-  // <CompetitionPrivatePage />
-
   return (
     <CompetitionProvider>
       <CompetitionsPageContainer>

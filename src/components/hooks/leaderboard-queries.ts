@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
 import { ILeaderboardLI } from '../../models/data-models';
-import { useCompetitionState } from '../contexts/competition-context';
+import { useCompetitionState } from '../pages/competition-page/competition-context';
 import { usePost } from './fetch';
 
 interface ILeaderboardPayload {
