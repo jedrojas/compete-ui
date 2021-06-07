@@ -4,14 +4,12 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 
 import BaseWidget from '../../bases/base-widget/base-widget';
-import { useCompetitionState } from '../../pages/competition-page/competition-context';
 import { useCompetitionStatusComponent } from './hooks';
 
 export interface ICompetitionStatusWidget {}
 
 export const CompetitionStatusWidget: React.FC<ICompetitionStatusWidget> = () => {
-  const { status } = useCompetitionState();
-  const StatusComponent = useCompetitionStatusComponent(status);
+  const StatusComponent = useCompetitionStatusComponent();
 
   return (
     <BaseWidget>

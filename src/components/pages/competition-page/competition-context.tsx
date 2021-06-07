@@ -23,7 +23,7 @@ const CompetitionStateContext = React.createContext<ICompetitionState>(
   {} as ICompetitionState
 );
 
-// Move this into a separate hooks file
+// TODO - Jed: Move this into a separate hooks file
 const useStatus = (start_date?: Date, end_date?: Date) => {
   const [status, setStatus] = useState<CompetitionStatus>(
     CompetitionStatus.NOT_SET

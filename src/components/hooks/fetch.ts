@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
+import { IError } from './activities-queries';
+
 export interface QueryResult<T> {
   data?: T;
   error?: string;
@@ -28,10 +30,6 @@ export const useGet = <D>(
   url: string,
   addedHeaders?: Record<string, string>
 ) => {
-  interface IError {
-    errorMessage?: string;
-  }
-
   const [data, setData] = useState<D | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<unknown>(null);
@@ -58,10 +56,63 @@ export const useGetCallback = () => {
         }
       : {};
 
-    return get<D>(url, headers);
+    return get<D & IError>(url, headers);
   }, []);
 
   return getFn;
+};
+
+export const put = async <T, P>(
+  url: string,
+  payload: P,
+  requestHeaders: Record<string, string>
+) => {
+  const headers = new Headers({
+    "Content-Type": "application/json",
+    ...requestHeaders,
+  });
+
+  const res = await fetch(url, {
+    method: "PUT",
+    headers,
+    redirect: "follow",
+    body: JSON.stringify(payload),
+  });
+
+  return (await res.json()) as T;
+};
+
+export const usePut = <D, P>(url: string, payload: P) => {
+  const [data, setData] = useState<D | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<unknown>(null);
+
+  useEffect(() => {
+    setLoading(true);
+
+    // add headers here if needed
+    const headers = {};
+
+    post<D, P>(url, payload, headers)
+      .then(setData)
+      .catch(setError)
+      .finally(() => setLoading(false));
+  }, [payload, url]);
+
+  return { data, loading, error };
+};
+
+export const usePutCallback = <D, P>() => {
+  const putFn = useCallback(
+    (url: string, payload: P, addedHeaders?: Record<string, string>) => {
+      const headers = { ...addedHeaders };
+
+      return put<D, P>(url, payload, headers);
+    },
+    []
+  );
+
+  return putFn;
 };
 
 export const post = async <T, P>(

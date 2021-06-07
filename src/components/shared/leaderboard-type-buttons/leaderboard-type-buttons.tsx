@@ -34,25 +34,27 @@ export const LeaderboardTypeButtons: React.FC<ILeaderboardTypeButtons> = ({
   };
 
   return (
-    <Row noGutters>
-      <Col xs="6">Leaderboard</Col>
-      <Col xs="6" className="d-flex flex-row font-size-12">
-        <BaseNeoButton
-          onClick={() => handleClick("team")}
-          className="mx-2"
-          pressed={isTeamPressed}
-        >
-          Team
-        </BaseNeoButton>
-        <BaseNeoButton
-          onClick={() => handleClick("athlete")}
-          className="ml-2"
-          pressed={isAthletePressed}
-        >
-          Athlete
-        </BaseNeoButton>
-      </Col>
-    </Row>
+    <Col xs="12" className="my-2">
+      <Row noGutters>
+        <Col xs="6">Leaderboard</Col>
+        <Col xs="6" className="d-flex flex-row font-size-12">
+          <BaseNeoButton
+            onClick={() => handleClick("team")}
+            className="mx-2"
+            pressed={isTeamPressed}
+          >
+            Team
+          </BaseNeoButton>
+          <BaseNeoButton
+            onClick={() => handleClick("athlete")}
+            className="ml-2"
+            pressed={isAthletePressed}
+          >
+            Athlete
+          </BaseNeoButton>
+        </Col>
+      </Row>
+    </Col>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
 
 import BasePageLayout from '../../bases/base-page-layout/base-page-layout';
 import CompetitionAdminView from './competition-admin-view/competition-admin-view';
@@ -9,12 +10,20 @@ import CompetitionPrivateView from './competition-private-view/competition-priva
 export interface ICompetitionPage {}
 
 export const CompetitionPage: React.FC<ICompetitionPage> = () => {
+  let { path } = useRouteMatch();
+
   return (
     <CompetitionProvider>
       <BasePageLayout>
-        <CompetitionAdminView />
-        <CompetitionParticipantView />
-        <CompetitionPrivateView />
+        <Switch>
+          <Route exact path={path}>
+            <CompetitionParticipantView />
+            <CompetitionPrivateView />
+          </Route>
+          <Route exact path={`${path}/admin`}>
+            <CompetitionAdminView />
+          </Route>
+        </Switch>
       </BasePageLayout>
     </CompetitionProvider>
   );

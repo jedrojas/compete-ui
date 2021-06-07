@@ -52,43 +52,56 @@ https://reactjs.org/docs/testing-environments.html#end-to-end-tests-aka-e2e-test
 
 <!--  -->
 
-<!-- ✔️ ✖️ USE CASES ✖️ ✔️ -->
+<!-- ✔️ ✖️ Z-Indexes ✖️ ✔️ -->
 
 z-index:
 0: default
 1: side bar
+
 <!--  -->
 
 
 <!-- ✔️ ✖️ USE CASES ✖️ ✔️ -->
 
 Login
-    ├ ⎯ As a User, I want to be able to login to the application using my Google credentials, so that login is fast and easy ✔️
+    ├ ⎯ (done) As a User, I want to be able to login to the application using my Google credentials, so that login is fast and easy 
 User
     ├ ⎯ As a User, I want to have a have a Dashboard to show active/approaching competitions, recent points/activities, bonuses
     ├ ⎯ As a User, I want to be able to see My Competitions (Separate Page)
     ├ ⎯ As a User, I want to be able to search for Competitions I could join (Separate Page)
 Competitions
     ├ ⎯ Create Competitions
-        ├ ⎯ As a User, I want to be able to create a competition ✔️
-        ├ ⎯ As a User, when I start creating a competition, if I click outside of the create modal, I should be given a warning message that unsaved data may be lost
-        ├ ⎯ As a User, when I create a competition, I want to be made admin ✔️
+        ├ ⎯ (done) As a User, I want to be able to create a competition
+        ├ ⎯ (done) As a User, when I create a competition, I want to be made admin
         ├ ⎯ As a User, when I create a competition, I want the option to join the competition as a participant as well, or just continue as Admin
         ├ ⎯ As a Dev, I want to allow a competition's start/end dates to be updated UNTIL the competition has been started
+        ├ ⎯ As a User, when I start creating a competition, if I click outside of the create modal, I should be given a warning message that unsaved data may be lost
     ├ ⎯ Competition Admin Permissions
+        ├ ⎯ (done) As a Competition Admin, I want the ability to set/update competition start/end dates
         ├ ⎯ As a Competition Admin, I want the ability to set/update point values for b/s/r
-        ├ ⎯ As a Competition Admin, I want the ability to set/update competition start/end dates
         ├ ⎯ As a Competition Admin, I want the ability to set/update competition type (individual vs team)
         ├ ⎯ As a Competition Admin, I want the ability to set/update the number of participants for my competition
         ├ ⎯ As a Competition Admin, I want the ability to make certain participants Admins for that competition
     ├ ⎯ Competition Admin Views
-        ├ ⎯ As a Competition Admin, I want the option to join my competition as a participant
-        ├ ⎯ As a Competition Admin, I want to the option to view the competition in Admin View and in Participant View (CURRENT)
+        ├ ⎯ (done) As a Competition Admin, I want the option to join my competition as a participant
+        ├ ⎯ (done) As a Competition Admin and participant, I want to the option to view the competition in Admin View and in Participant View
     ├ ⎯ Join Competitions
-        ├ ⎯ As a User, I want the ability to join a public competition
+        ├ ⎯ (done) As a User, I want the ability to join a public competition
+        ├ ⎯ As a User, after I join a public competition, I want to be taken to the competition page
+        ├ ⎯ As a User, I want the ability to request to join a private competition
+    ├ ⎯ Leave Competitions
+        ├ ⎯ As a User, I want the ability to leave an already joined competition
+    ├ ⎯ Errors
+        ├ ⎯ As a Dev, I want to display a "Competition not found" page when a user enters a URL with an invalid cid
 Activities
     ├ ⎯ Importing Activities
         ├ ⎯ As a Dev, I want to import activities from Strava periodically, so the User does not have to manually import it every time they perform an activity
+Error Messages
+    ├ ⎯ Admin Page
+            ├ ⎯ As a Dev, if a user is not a competition admin, I want to display a message saying access not allowed or something if a user tries to access the admin page
+    ├ ⎯ Back End
+            ├ ⎯ As a Dev, if the back end is down, I want to display some kind of "site down" message
+
 Business POV
     ├ ⎯ As a PO, I want to allow users to purchase the premium version to allow more participants per competition (limit 50 before maybe), allow more competitions to be joined at once (limit 5 before maybe)
     ├ ⎯ As a PO, I want to give Users "Streak" awards, to incentivize Users to actively participate in their competitions

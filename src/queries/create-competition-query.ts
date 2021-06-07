@@ -16,7 +16,7 @@ export function useCreateCompetitionQuery() {
       };
 
       post("http://localhost:3000/competition", payload, headers)
-        .then((data) => history.push(`competitions/${data.id}`))
+        .then((data) => history.push(`competition/${data.id}`))
         .catch((e) => console.log("Error creating competition", e));
     },
     [history, post]

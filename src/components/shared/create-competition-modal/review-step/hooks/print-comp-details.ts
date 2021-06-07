@@ -4,8 +4,8 @@ export const usePrintCompDetails = () => {
   const nameMap = new Map<string, string>([
     ["name", "Competition Name"],
     ["type", "Competition Type"],
-    ["startDate", "Start Date"],
-    ["endDate", "End Date"],
+    ["start_date", "Start Date"],
+    ["end_date", "End Date"],
   ]);
 
   const printCompDetails = (k: string, v: string | Date) => {

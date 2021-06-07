@@ -28,7 +28,6 @@ function App() {
             <Route exact path="/competitions">
               <UserCompetitionsPage />
             </Route>
-            {/* TODO - Jed: update route path */}
             <Route path="/competition/:cid">
               <CompetitionPage />
             </Route>

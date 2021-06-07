@@ -1,25 +1,19 @@
 import '../../../styles/variables.scss';
 
+import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
-import { Col, Modal, Row } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
+import { Col, Row } from 'react-bootstrap';
 
+import { useGetStravaActivities } from '../../../queries/get-strava-activities-query';
 import BaseNeoButton from '../../bases/base-neo-button/base-neo-button';
 import BasePageLayout from '../../bases/base-page-layout/base-page-layout';
-import { useFirstAndLastNameCheck } from '../../hooks/first-and-last-name-check-hooks';
-import { useGetStravaActivities } from '../../hooks/strava-hooks';
-import { useUpdateUserMetadata } from '../../hooks/user-metadata-hooks';
 import UserCompetitionsSection from '../../shared/user-competitions-section/user-competitions-section';
 import UserDashboardActivityWidget from '../../shared/user-dashboard-activity-widget/user-dashboard-activity-widget';
 
 export interface IDashboardPage {}
 
 export const DashboardPage: React.FC<IDashboardPage> = () => {
-  // TODO: is this really the most efficient way to handle sign up? (low priority)
-  const { showSignUpModal, setShowSignUpModal } = useFirstAndLastNameCheck();
-  const { updateUser } = useUpdateUserMetadata();
-  const { register, handleSubmit, errors } = useForm();
-
+  const { user } = useAuth0();
   // This should be replaced with a user field that
   // says whether or not the user has connected to strava
   const stravaAccessToken = localStorage.getItem("stravaAccessToken");
@@ -67,64 +61,9 @@ export const DashboardPage: React.FC<IDashboardPage> = () => {
           </BaseNeoButton>
         )}
 
+        <Row>{JSON.stringify(user, null, 2)}</Row>
+
         {/* end strava import component  */}
-
-        {/* TODO - Jed: extract the following into its own component */}
-        <Modal
-          show={showSignUpModal}
-          onHide={() => setShowSignUpModal(false)}
-          contentClassName="bg-light-grey"
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>Complete Sign Up</Modal.Title>
-          </Modal.Header>
-
-          <Modal.Body>
-            <Row noGutters className="mb-3">
-              Fill in your first and last name to complete sign up:
-            </Row>
-            <form
-              onSubmit={handleSubmit((data) => {
-                updateUser(data.firstName, data.lastName);
-                setShowSignUpModal(false);
-              })}
-            >
-              <Row>
-                <Col>
-                  <input
-                    name="firstName"
-                    placeholder="first name"
-                    ref={register({ required: true })}
-                    className="w-100 form-text-field my-2"
-                  />
-                  <Row noGutters className="text-danger mb-3">
-                    {errors.firstName && <span>This field is required</span>}
-                  </Row>
-
-                  <input
-                    name="lastName"
-                    placeholder="last name"
-                    ref={register({ required: true })}
-                    className="w-100 form-text-field my-2"
-                  />
-                  <Row noGutters className="text-danger mb-3">
-                    {errors.lastName && <span>This field is required</span>}
-                  </Row>
-                </Col>
-              </Row>
-
-              <Row className="mt-3">
-                <Col>
-                  {/* TODO: make padding 0 here take priority over padding set in base neo button */}
-                  {/* change this button to not stay in depressed state after being clicked */}
-                  <BaseNeoButton className="w-25 p-0">
-                    <input type="submit" className="w-100 sign-up-submit-btn" />
-                  </BaseNeoButton>
-                </Col>
-              </Row>
-            </form>
-          </Modal.Body>
-        </Modal>
       </Col>
     </BasePageLayout>
   );

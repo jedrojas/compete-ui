@@ -17,11 +17,9 @@ export const LeaderboardWidget: React.FC<ILeaderboardWidget> = () => {
   return (
     <BaseWidget>
       <BaseWidget.Header>
-        <Col xs="12" className="my-2">
-          <LeaderboardTypeButtons
-            handleTypeButtonClick={(type) => setLeaderboardType(type)}
-          />
-        </Col>
+        <LeaderboardTypeButtons
+          handleTypeButtonClick={(type) => setLeaderboardType(type)}
+        />
       </BaseWidget.Header>
       <BaseWidget.Body>
         <Col xs="12">
