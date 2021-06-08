@@ -17,11 +17,11 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <UserProvider>
-          <Switch>
-            <Route exact path="/">
-              <LandingPage />
-            </Route>
+        <Switch>
+          <Route exact path="/">
+            <LandingPage />
+          </Route>
+          <UserProvider>
             <Route path="/dashboard">
               <DashboardPage />
             </Route>
@@ -37,8 +37,8 @@ function App() {
             <Route path="/settings">
               <SettingsPage />
             </Route>
-          </Switch>
-        </UserProvider>
+          </UserProvider>
+        </Switch>
       </Router>
     </AuthProvider>
   );

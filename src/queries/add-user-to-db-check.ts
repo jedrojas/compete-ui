@@ -23,6 +23,7 @@ export const useAddUserToDbCheck = async () => {
           createUserQuery({
             id: user.sub,
           });
+          window.location.reload();
         }
       })
       .catch((err) => console.log("--Error--", err));

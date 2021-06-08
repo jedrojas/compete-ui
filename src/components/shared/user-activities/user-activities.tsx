@@ -27,15 +27,17 @@ export const UserActivities: React.FC<IUserActivities> = ({ activities }) => {
 
         <Col xs="2">
           <Row xs="1">
-            <Col className="d-flex justify-content-end">{"Miles"}</Col>
+            <Col className="d-flex justify-content-end">
+              {"Distance (meters)"}
+            </Col>
           </Row>
         </Col>
-
+        {/* 
         <Col xs="2">
           <Row xs="1">
             <Col className="d-flex justify-content-end">{"Points"}</Col>
           </Row>
-        </Col>
+        </Col> */}
 
         <Col xs="3">
           <Row xs="1">

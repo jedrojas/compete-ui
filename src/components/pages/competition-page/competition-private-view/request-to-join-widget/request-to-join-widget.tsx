@@ -23,6 +23,7 @@ export const RequestToJoinWidget: React.FC<IRequestToJoinWidget> = () => {
                 user_id: user.sub,
                 competition_id: cid,
               });
+              setTimeout(() => window.location.reload(), 1000);
             }}
           >
             Join competition

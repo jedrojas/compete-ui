@@ -1,11 +1,9 @@
 import { useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
 
 import { usePostCallback } from '../components/hooks/fetch';
 import { ICompetition, ICreateCompetitionPayload } from '../models/data-models';
 
 export function useCreateCompetitionQuery() {
-  const history = useHistory();
   const post = usePostCallback<ICompetition, ICreateCompetitionPayload>();
 
   const createCompetitionQuery = useCallback(
@@ -15,11 +13,9 @@ export function useCreateCompetitionQuery() {
         Authorization: `Bearer ${accessToken}`,
       };
 
-      post("http://localhost:3000/competition", payload, headers)
-        .then((data) => history.push(`competition/${data.id}`))
-        .catch((e) => console.log("Error creating competition", e));
+      return post("http://localhost:3000/competition", payload, headers);
     },
-    [history, post]
+    [post]
   );
 
   return createCompetitionQuery;

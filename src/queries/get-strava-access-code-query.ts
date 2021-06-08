@@ -23,8 +23,13 @@ export function useStravaAccessCode() {
     // Retrieve from here if needed in the future
     post("https://www.strava.com/oauth/token", payload)
       .then((data) => {
-        localStorage.setItem("stravaAccessToken", data.access_token);
-        localStorage.setItem("stravaRefreshToken", data.refresh_token);
+        if (data.access_token) {
+          localStorage.setItem("stravaAccessToken", data.access_token);
+          localStorage.setItem("exp", data.expires_at);
+        }
+
+        if (data.refresh_token)
+          localStorage.setItem("stravaRefreshToken", data.refresh_token);
         history.push("/dashboard");
       })
       .catch((e) => console.log("Error authenticating Strava user", e));

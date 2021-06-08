@@ -7,7 +7,7 @@ import { Col, Row } from 'react-bootstrap';
 import { useGetStravaActivities } from '../../../queries/get-strava-activities-query';
 import BaseNeoButton from '../../bases/base-neo-button/base-neo-button';
 import BasePageLayout from '../../bases/base-page-layout/base-page-layout';
-import UserCompetitionsSection from '../../shared/user-competitions-section/user-competitions-section';
+import { useUserState } from '../../contexts/user-context';
 import UserDashboardActivityWidget from '../../shared/user-dashboard-activity-widget/user-dashboard-activity-widget';
 
 export interface IDashboardPage {}
@@ -17,18 +17,19 @@ export const DashboardPage: React.FC<IDashboardPage> = () => {
   // This should be replaced with a user field that
   // says whether or not the user has connected to strava
   const stravaAccessToken = localStorage.getItem("stravaAccessToken");
+  const { user: sqlUser } = useUserState();
 
   const { getStravaActivities, loading } = useGetStravaActivities();
 
   return (
     <BasePageLayout>
       <Col>
-        <div>
+        {/* <div>
           Things to add to this page: Competitions section (list comps, create
           new comp), Teams section (list teams), activity summary,
-        </div>
+        </div> */}
 
-        <UserCompetitionsSection />
+        {/* <UserCompetitionsSection /> */}
 
         {/* TODO - Jed: make this look good */}
 
@@ -62,6 +63,7 @@ export const DashboardPage: React.FC<IDashboardPage> = () => {
         )}
 
         <Row>{JSON.stringify(user, null, 2)}</Row>
+        <Row>{`User: ${sqlUser?.last_name}, ${sqlUser?.first_name}`}</Row>
 
         {/* end strava import component  */}
       </Col>

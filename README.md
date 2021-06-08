@@ -63,6 +63,25 @@ z-index:
 
 <!-- ✔️ ✖️ USE CASES ✖️ ✔️ -->
 
+
+MVP FR FR
+    ├ ⎯ As a dev, clean up the UI. If it looks good, most of the functionality is already there
+    ├ ⎯ As a dev, deploy the website somewhere public. Look into using docker or something for this for #resume
+MVP
+    ├ ⎯ (done) As a user, I want to be able to see all my strava activities (or at least top 10)
+    ├ ⎯ (done) As a dev, I want to hide the "team" option in leaderboard and participants if the competition is type individual
+    ├ ⎯ (done) As a user, I want to be able to create a team and join it
+    ├ ⎯ (done) As a user, I want to be able to view participating teams
+    ├ ⎯ As a user, I want to be able to find a team and join it
+    ├ ⎯ As a dev, I want the leaderboard to display participants and teams if comp hasn't started (points should be 0)
+    ├ ⎯ As a dev, I want routes to be protected depending on user's permissions
+    ├ ⎯ As a user, I want to be able to leave competitions/teams
+
+MVP nice to haves
+    ├ ⎯ As a user, I want to be able to set the maximum number of participants per team
+    ├ ⎯ As a user, I want to be able to sync strava once and not have to worry about it (or be told when strava token is expired)
+    ├ ⎯ As a dev, I want to disable joining other teams if a user is already part of a team
+
 Login
     ├ ⎯ (done) As a User, I want to be able to login to the application using my Google credentials, so that login is fast and easy 
 User
@@ -93,6 +112,7 @@ Competitions
         ├ ⎯ As a User, I want the ability to leave an already joined competition
     ├ ⎯ Errors
         ├ ⎯ As a Dev, I want to display a "Competition not found" page when a user enters a URL with an invalid cid
+        ├ ⎯ As a Dev, I want to display a "Error creating competition" error when a user tries to create a competition and fails
 Activities
     ├ ⎯ Importing Activities
         ├ ⎯ As a Dev, I want to import activities from Strava periodically, so the User does not have to manually import it every time they perform an activity

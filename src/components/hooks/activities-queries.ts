@@ -1,5 +1,4 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import { useCallback } from 'react';
 
 import { IActivity } from '../../models/data-models';
 import { useGet } from './fetch';
@@ -11,7 +10,7 @@ export const useUserActivities = () => {
     `http://localhost:3000/user/${user?.sub}/activities`
   );
 
-  return { data, loading, error };
+  return { data: data?.slice(0, 10) ?? [], loading, error };
 };
 
 export const useUserActivitiesByCompetitionQuery = (cId: string) => {

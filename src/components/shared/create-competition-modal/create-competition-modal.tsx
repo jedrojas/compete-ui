@@ -1,6 +1,7 @@
 import './create-competition-modal.scss';
 
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { ICreateCompetitionPayload } from '../../../models/data-models';
 import useCreateCompetitionQuery from '../../../queries/create-competition-query';
@@ -21,10 +22,15 @@ export const CreateCompetitionModal: React.FC<ICreateCompetitionModal> = ({
 }) => {
   const [payload, setPayload] = useState<ICreateCompetitionPayload>({});
   const createCompetitionQuery = useCreateCompetitionQuery();
+  const history = useHistory();
 
   const handleSubmit = (payload: ICreateCompetitionPayload) => {
-    createCompetitionQuery(payload);
-    setShow(false);
+    createCompetitionQuery(payload)
+      .then((data) => {
+        history.push(`competition/${data.id}`);
+        setShow(false);
+      })
+      .catch((e) => console.log("Error creating competition", e));
   };
 
   return (

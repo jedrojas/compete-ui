@@ -16,9 +16,18 @@ export function useGetUserCompetitionQuery(cid: string) {
     `http://localhost:3000/user-competition/${cid}`,
     headers
   );
-  const { isUserAdmin, isUserParticipant, activities, points } = data ?? {};
+  const { isUserAdmin, isUserParticipant, userHasTeam, activities, points } =
+    data ?? {};
 
-  return { isUserAdmin, isUserParticipant, activities, points, loading, error };
+  return {
+    isUserAdmin,
+    isUserParticipant,
+    userHasTeam,
+    activities,
+    points,
+    loading,
+    error,
+  };
 }
 
 export default useGetUserCompetitionQuery;

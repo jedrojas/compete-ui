@@ -1,36 +1,58 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Col, Modal, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
+import { IUser } from '../../models/data-models';
 import useCreateUserQuery from '../../queries/create-user-query';
 import { useStravaAccessCode } from '../../queries/get-strava-access-code-query';
+import { useGetUserQuery } from '../../queries/get-user-query';
 import BaseNeoButton from '../bases/base-neo-button/base-neo-button';
-import { useFirstAndLastNameCheck } from '../hooks/first-and-last-name-check-hooks';
 import { useUpdateUserMetadata } from '../hooks/user-metadata-hooks';
 
-interface IUserState {}
+interface IUserState {
+  user: IUser | null;
+}
 
 const UserStateContext = React.createContext<IUserState>({} as IUserState);
 
-const useUserContext = async () => {
+const useUserContext = () => {
+  const [showSignUpModal, setShowSignUpModal] = useState(false);
+  const { user: auth0User } = useAuth0();
+
   useStravaAccessCode();
   useAuth0AccessToken();
 
-  return useMemo(() => ({}), []);
+  const { data: user, loading } = useGetUserQuery();
+
+  useEffect(() => {
+    if (!loading && !user && !!auth0User) {
+      setShowSignUpModal(true);
+    } else {
+      setShowSignUpModal(false);
+    }
+  }, [auth0User, loading, user]);
+
+  return useMemo(
+    () => ({
+      user,
+      showSignUpModal,
+      setShowSignUpModal,
+    }),
+    [showSignUpModal, user]
+  );
 };
 
 const UserProvider = ({ children }) => {
-  const userState = useUserContext();
-  const { showSignUpModal, setShowSignUpModal } = useFirstAndLastNameCheck();
+  const { user, showSignUpModal, setShowSignUpModal } = useUserContext();
   const { register, handleSubmit, errors } = useForm();
   const { updateUser } = useUpdateUserMetadata();
   const createUserQuery = useCreateUserQuery();
-  const { user } = useAuth0();
+  const { user: auth0User } = useAuth0();
 
   return (
     <>
-      <UserStateContext.Provider value={userState}>
+      <UserStateContext.Provider value={{ user }}>
         {children}
       </UserStateContext.Provider>
 
@@ -53,7 +75,7 @@ const UserProvider = ({ children }) => {
             onSubmit={handleSubmit((data) => {
               updateUser(data.firstName, data.lastName);
               createUserQuery({
-                id: user?.sub,
+                id: auth0User?.sub,
                 first_name: data.firstName,
                 last_name: data.lastName,
               });

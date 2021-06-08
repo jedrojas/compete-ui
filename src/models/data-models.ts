@@ -68,9 +68,16 @@ export interface ICompetition {
   isUserAdmin?: number;
 }
 
+export interface ITeam {
+  id: string;
+  name?: string;
+  members?: IUser[];
+}
+
 export interface IUserCompetitionData {
   isUserAdmin: boolean;
   isUserParticipant: boolean;
+  userHasTeam: boolean;
   activities: IActivity[];
   points: number;
 }
@@ -80,8 +87,9 @@ export type IJoinableCompetition = ICompetition & { is_joined: boolean };
 export interface IStravaTokenPayload {
   client_id: string;
   client_secret: string;
-  code: string;
+  code?: string;
   grant_type: string;
+  refresh_token?: string;
 }
 
 export interface SyncStravaActivitiesPayload {
@@ -121,6 +129,15 @@ export interface ICreateUserPayload {
   id: string;
   first_name?: string;
   last_name?: string;
+}
+
+export interface ICreateTeamPayload {
+  name: string;
+  cid: string;
+}
+
+export interface ICreateUserTeamPayload {
+  tid: string;
 }
 
 export type multiStepModalPayloadTypes = ICreateCompetitionPayload;

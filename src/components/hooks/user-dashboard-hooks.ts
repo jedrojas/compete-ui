@@ -10,7 +10,5 @@ export const useDashboardCompetitions = () => {
     `http://localhost:3000/user/${user?.sub}/competitions`
   );
 
-  if (error) console.log("--error fetching dashboard competitions--", error);
-
   return { dashboardCompetitions: data ?? ([] as ICompetition[]) };
 };
