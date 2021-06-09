@@ -62,7 +62,7 @@ export const useUpdateUserMetadata = () => {
 
     try {
       accessToken = await getAccessTokenSilently({
-        // TODO: pull this out to config file or something
+        // TODO - Jed: pull this out to config file or something
         audience: "https://dev-k8hhju21.us.auth0.com/api/v2/",
         scope: "read:current_user update:current_user_metadata",
       });

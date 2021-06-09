@@ -17,7 +17,7 @@ export const BaseWidget: React.FC<IBaseWidget> & IBaseWidgetComposition = ({
   children,
 }) => {
   return (
-    <BaseNeoCard className="d-flex flex-column justify-content-center m-2 p-2">
+    <BaseNeoCard className="d-flex flex-column justify-content-center mx-2 my-4 p-2">
       {children}
     </BaseNeoCard>
   );

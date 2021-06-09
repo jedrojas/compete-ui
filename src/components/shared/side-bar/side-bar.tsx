@@ -1,6 +1,9 @@
 import './side-bar.scss';
 
-import React from 'react';
+import { faFlagCheckered, faHome, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classnames from 'classnames';
+import React, { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
@@ -9,56 +12,78 @@ import BaseNeoCard from '../../bases/base-neo-card/base-neo-card';
 export interface ISideBar {}
 
 export const SideBar: React.FC<ISideBar> = () => {
-  // TODO: modularize this page
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
-    <Col xs="3" className="h-100 pl-0">
+    <Row
+      noGutters
+      className="side-bar position-absolute"
+      style={{ height: "100vh" }}
+      onMouseEnter={() => setIsExpanded(true)}
+      onMouseLeave={() => setIsExpanded(false)}
+    >
       <BaseNeoCard
-        className="d-flex flex-column h-100 w-100 position-sticky"
+        className="d-flex flex-column overflow-hidden h-100 position-sticky"
         rounded={false}
       >
-        <Row
-          noGutters
-          className="font-montserrat color-teal m-3"
+        <div
+          // noGutters
+          className="font-montserrat color-teal my-3 pl-2 px-auto cursor-pointer justify-content-center"
           style={{
             fontSize: "44px",
             borderBottom: "2px solid #ffc033",
           }}
         >
-          COMPETE
-        </Row>
+          <span>C</span>
+          <span className={classnames("fade-title", { show: isExpanded })}>
+            ompete
+          </span>
+        </div>
+
+        <NavLink to="/dashboard" className="px-auto" activeClassName="active">
+          <Row
+            noGutters
+            className="side-bar-item no-hover-line p-3 cursor-pointer justify-content-center"
+            style={{ width: "300px" }}
+          >
+            <Col xs="2">
+              <FontAwesomeIcon icon={faHome} />
+            </Col>
+            <Col xs="10">Dashboard</Col>
+          </Row>
+        </NavLink>
 
         <NavLink
-          to="/dashboard"
-          className="side-bar-item no-hover-line"
+          to="/competitions"
+          className="px-auto"
           activeClassName="active"
         >
           <Row
             noGutters
-            className="side-bar-item no-hover-line p-3 cursor-pointer"
+            className="side-bar-item no-hover-line p-3 cursor-pointer justify-content-center"
+            style={{ width: "300px" }}
           >
-            <div className="bg-transparent">Dashboard</div>
+            <Col xs="2">
+              <FontAwesomeIcon icon={faFlagCheckered} />
+            </Col>
+            <Col xs="10">Competitions</Col>
           </Row>
         </NavLink>
 
-        <NavLink to="/competitions" className="" activeClassName="active">
+        <NavLink to="/teams" className="px-auto" activeClassName="active">
           <Row
             noGutters
-            className="side-bar-item no-hover-line p-3 cursor-pointer"
+            className="side-bar-item no-hover-line p-3 cursor-pointer justify-content-center"
+            style={{ width: "300px" }}
           >
-            <div className="bg-transparent">Competitions</div>
-          </Row>
-        </NavLink>
-
-        <NavLink to="/teams" className="" activeClassName="active">
-          <Row
-            noGutters
-            className="side-bar-item no-hover-line p-3 cursor-pointer"
-          >
-            <div className="bg-transparent">Teams</div>
+            <Col xs="2">
+              <FontAwesomeIcon icon={faUsers} />
+            </Col>
+            <Col xs="10">Teams</Col>
           </Row>
         </NavLink>
       </BaseNeoCard>
-    </Col>
+    </Row>
   );
 };
 

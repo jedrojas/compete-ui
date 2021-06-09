@@ -26,7 +26,7 @@ export const UserActivity: React.FC<IUserActivity> = ({ activity }) => {
               })}
             />
           </Col>
-          <Col>{activity.name ?? "Lorem ipsum"}</Col>
+          <Col>{activity.name ?? "No Name"}</Col>
         </Row>
       </Col>
 
@@ -36,11 +36,11 @@ export const UserActivity: React.FC<IUserActivity> = ({ activity }) => {
         </Row>
       </Col>
 
-      <Col xs="2">
-        <Row xs="1">
+      {/* <Col xs="2"> */}
+      {/* <Row xs="1">
           <Col className="d-flex justify-content-end">{activity.points}</Col>
-        </Row>
-      </Col>
+        </Row> */}
+      {/* </Col> */}
 
       <Col xs="3">
         <Row xs="1">

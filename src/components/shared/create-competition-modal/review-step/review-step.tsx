@@ -2,24 +2,25 @@ import './review-step.scss';
 
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { format } from 'date-fns';
 import React from 'react';
 import { Button, Modal, Row } from 'react-bootstrap';
 
 import { useMultiStepModalState } from '../../../contexts/multi-step-modal-context';
+import { usePrintCompDetails } from './hooks/print-comp-details';
 
 export interface ReviewStepProps {
   stepNum?: number;
+  update?: boolean;
 }
 
-export const ReviewStep: React.FC<ReviewStepProps> = ({ stepNum }) => {
+export const ReviewStep: React.FC<ReviewStepProps> = ({ stepNum, update }) => {
   const {
     stepCount,
     setStepCount,
-    setShow,
     payload,
     onSubmit,
   } = useMultiStepModalState();
+  const { printCompDetails } = usePrintCompDetails();
 
   return stepNum === stepCount ? (
     <>
@@ -30,9 +31,9 @@ export const ReviewStep: React.FC<ReviewStepProps> = ({ stepNum }) => {
       </Modal.Header>
       <Modal.Body>
         {Object.entries(payload ?? {}).map(([k, v]) => (
-          <Row noGutters key={`${k}${v}`}>{`${k}: ${
-            ["startDate", "endDate"].includes(k) ? format(v, "MM/dd/yyyy") : v
-          }`}</Row>
+          <Row noGutters key={`${k}${v}`}>
+            {printCompDetails(k, v)}
+          </Row>
         ))}
       </Modal.Body>
       <Modal.Footer className="justify-content-between">
@@ -46,12 +47,9 @@ export const ReviewStep: React.FC<ReviewStepProps> = ({ stepNum }) => {
         <Button
           title="Submit"
           className="cursor-pointer ml-auto"
-          onClick={() => {
-            onSubmit(payload);
-            setShow(false);
-          }}
+          onClick={() => onSubmit(payload)}
         >
-          Create
+          {update ? "Update" : "Create"}
           <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
         </Button>
       </Modal.Footer>

@@ -13,18 +13,29 @@ export interface ILeaderboard {
 }
 
 export const Leaderboard: React.FC<ILeaderboard> = ({ rows, type }) => {
-  const LeaderboardLineItem =
-    type === "team" ? LeaderboardTeamLineItem : LeaderboardAthleteLineItem;
-
-  return (
+  return type === "team" ? (
     <Row>
-      {rows
-        ? rows.map((row, index) => (
-            <Col xs="12" key={`${row.id}:${index}`}>
-              <LeaderboardLineItem pos={index + 1} data={row} />
-            </Col>
-          ))
-        : null}
+      {rows?.length ? (
+        rows.map((row, index) => (
+          <Col xs="12" key={`${row.id}:${index}`}>
+            <LeaderboardTeamLineItem pos={index + 1} data={row} />
+          </Col>
+        ))
+      ) : (
+        <Col>No teams have joined yet!</Col>
+      )}
+    </Row>
+  ) : (
+    <Row>
+      {rows?.length ? (
+        rows.map((row, index) => (
+          <Col xs="12" key={`${row.id}:${index}`}>
+            <LeaderboardAthleteLineItem pos={index + 1} data={row} />
+          </Col>
+        ))
+      ) : (
+        <Col>No activities have been completed yet!</Col>
+      )}
     </Row>
   );
 };

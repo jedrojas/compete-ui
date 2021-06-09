@@ -27,7 +27,7 @@ export const FindCompetitionStep: React.FC<NewCompetitionStepProps> = () => {
               <BaseNeoButton
                 className="d-flex h-75 w-100 align-items-center mx-2"
                 style={competition.is_joined ? { opacity: ".5" } : null}
-                onClick={() => history.push(`/competitions/${competition.id}`)}
+                onClick={() => history.push(`/competition/${competition.id}`)}
               >
                 <Col
                   xs="3"

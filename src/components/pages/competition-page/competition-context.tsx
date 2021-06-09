@@ -1,7 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { IActivity } from '../../../models/data-models';
 import { CompetitionStatus } from '../../../models/enums';
+import { useGetUserCompetitionQuery } from '../../../queries/get-user-competition-query';
 import { useCompetitionById } from '../../hooks/competitions-queries';
 
 interface ICompetitionState {
@@ -11,13 +13,19 @@ interface ICompetitionState {
   name?: string;
   type?: string;
   status?: CompetitionStatus;
+  isUserAdmin?: boolean;
+  isUserParticipant?: boolean;
+  userTeamId?: string | null;
+  currTeamId?: string | null;
+  activities?: IActivity[];
+  points?: number;
 }
 
 const CompetitionStateContext = React.createContext<ICompetitionState>(
   {} as ICompetitionState
 );
 
-// Move this into a separate hooks file
+// TODO - Jed: Move this into a separate hooks file
 const useStatus = (start_date?: Date, end_date?: Date) => {
   const [status, setStatus] = useState<CompetitionStatus>(
     CompetitionStatus.NOT_SET
@@ -43,19 +51,17 @@ const useStatus = (start_date?: Date, end_date?: Date) => {
 };
 
 const useCompetitionContext = () => {
-  // API should take in the following inputs:
-  //    cid, uid?
-  // API call should return the following
-  //    competition data: start/end date, name, type, status
-  //    participant data: participants & points
-  //    user data (if applicable): isAdmin, isParticipant, points
-  // Split this into separate APIs: One gets comp data and participant data, other gets user data related to comp
-
-  // get cid from useCompetitionById
   const { cid } = useParams<{ cid: string }>();
   const { start_date, end_date, name, type } = useCompetitionById(cid);
-  // declare current uid here
-  // const { isUserAdmin } = useGetAdminStatus(cid, uid)
+  const {
+    isUserAdmin,
+    isUserParticipant,
+    userTeamId,
+    currTeamId,
+    activities,
+    points,
+  } = useGetUserCompetitionQuery(cid);
+
   const status = useStatus(start_date, end_date);
 
   return useMemo(
@@ -66,8 +72,27 @@ const useCompetitionContext = () => {
       name,
       type,
       status,
+      isUserAdmin,
+      isUserParticipant,
+      userTeamId,
+      currTeamId,
+      activities,
+      points,
     }),
-    [cid, end_date, name, start_date, status, type]
+    [
+      activities,
+      cid,
+      end_date,
+      isUserAdmin,
+      isUserParticipant,
+      name,
+      points,
+      start_date,
+      status,
+      type,
+      userTeamId,
+      currTeamId,
+    ]
   );
 };
 

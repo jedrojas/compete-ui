@@ -59,14 +59,11 @@ const useCompetitionContext = () => {
   );
 };
 
+// TODO - Jed: remove this file, should be unused
 const CompetitionProvider = ({ children }) => {
   const competitionState = useCompetitionContext();
 
-  return (
-    <CompetitionStateContext.Provider value={competitionState}>
-      {children}
-    </CompetitionStateContext.Provider>
-  );
+  return null;
 };
 
 const useCompetitionState = () => {

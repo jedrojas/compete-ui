@@ -1,28 +1,23 @@
-import React from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button, Col } from 'react-bootstrap';
 
+import BasePageLayout from '../../bases/base-page-layout/base-page-layout';
 import { useUserCompetitions } from '../../hooks/competitions-queries';
-import { useModal } from '../../hooks/modal-hooks';
 import CompetitionCard from '../../shared/competition-card/competition-card';
 import CreateCompetitionModal from '../../shared/create-competition-modal/create-competition-modal';
+import FindCompetitionModal from '../../shared/find-competition-modal/find-competition-modal';
 import NoUserCompetitionsFoundMsg from '../../shared/no-user-competitions-found-msg/no-user-competitions-found-msg';
-import SideBar from '../../shared/side-bar/side-bar';
-import UserCompetitionsPageContainer from './user-competitions-page-container/user-competitions-page-container';
 
 export interface IUserCompetitionsPage {}
 
 export const UserCompetitionsPage: React.FC<IUserCompetitionsPage> = () => {
   const { userCompetitions } = useUserCompetitions();
-  const [show, setShow] = useModal();
+  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [showFindModal, setShowFindModal] = useState(false);
 
   return (
-    <UserCompetitionsPageContainer>
-      <SideBar />
+    <BasePageLayout pageHeader="Competitions">
       <Col>
-        <Row className="mt-4">
-          <h2>Competitions</h2>
-        </Row>
-
         {userCompetitions.length ? (
           userCompetitions.map((competition) => (
             <CompetitionCard competition={competition} />
@@ -31,30 +26,21 @@ export const UserCompetitionsPage: React.FC<IUserCompetitionsPage> = () => {
           <NoUserCompetitionsFoundMsg />
         )}
 
-        <Button onClick={() => setShow(true)}>Create A Competition</Button>
+        <Button onClick={() => setShowCreateModal(true)} className="mx-2">
+          Create a competition
+        </Button>
+        <Button onClick={() => setShowFindModal(true)} className="mx-2">
+          Find existing competition
+        </Button>
       </Col>
 
-      <CreateCompetitionModal show={show} setShow={setShow} />
-    </UserCompetitionsPageContainer>
+      <CreateCompetitionModal
+        show={showCreateModal}
+        setShow={setShowCreateModal}
+      />
+      <FindCompetitionModal show={showFindModal} setShow={setShowFindModal} />
+    </BasePageLayout>
   );
 };
 
 export default UserCompetitionsPage;
-
-export interface IMultiStepModalPayload {
-  name?: string;
-  type?: string;
-  startDate?: Date;
-  endDate?: Date;
-}
-
-export interface ICreateCompetitionPayload {
-  name?: string;
-  type?: string;
-  startDate?: Date;
-  endDate?: Date;
-}
-
-export type multiStepModalPayloadTypes =
-  | IMultiStepModalPayload
-  | ICreateCompetitionPayload;

@@ -1,14 +1,14 @@
 import React, { useMemo, useState } from 'react';
 
-import { IMultiStepModalPayload, multiStepModalPayloadTypes } from '../pages/user-competitions-page/user-competitions-page';
+import { multiStepModalPayloadTypes } from '../../models/data-models';
 
 interface IMultiStepModalState {
   show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
   stepCount: number;
   setStepCount: React.Dispatch<React.SetStateAction<number>>;
-  payload: IMultiStepModalPayload;
-  setPayload: React.Dispatch<React.SetStateAction<IMultiStepModalPayload>>;
+  payload: multiStepModalPayloadTypes;
+  setPayload: React.Dispatch<React.SetStateAction<multiStepModalPayloadTypes>>;
   onSubmit: (payload: multiStepModalPayloadTypes) => void;
 }
 

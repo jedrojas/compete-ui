@@ -51,33 +51,35 @@ export const useJoinableCompetitionsQuery = () => {
     const getJoinableCompetitions = async () => {
       setLoading(true);
       new Promise<void>(async (resolve, reject) => {
-        try {
-          await fetch(
-            `http://localhost:3000/user/${user.sub}/joinable-competitions`,
-            {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          )
-            .then((res) => res.json())
-            .then((data) => {
-              setData(data);
-              setLoading(false);
-            })
-            .catch((e) => {
-              setError(e);
-              throw new Error("Error getting joinable competitions");
-            });
-        } catch (e) {
-          console.log("--error--", e);
+        if (user?.sub) {
+          try {
+            await fetch(
+              `http://localhost:3000/user/${user.sub}/joinable-competitions`,
+              {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            )
+              .then((res) => res.json())
+              .then((data) => {
+                setData(data);
+                setLoading(false);
+              })
+              .catch((e) => {
+                setError(e);
+                throw new Error("Error getting joinable competitions");
+              });
+          } catch (e) {
+            console.log("--error--", e);
+          }
         }
       });
     };
 
     getJoinableCompetitions();
-  }, [user.sub]);
+  }, [user]);
 
   return { data, loading, error };
 };

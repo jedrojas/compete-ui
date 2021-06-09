@@ -13,16 +13,6 @@ export const useCompetitionById = (cId: string) => {
   return { competition: data, start_date, end_date, name, type };
 };
 
-export const useGetCompetitionQuery = (cId: string, uId?: string) => {
-  const { data } = useGet<ICompetition>(
-    `http://localhost:3000/competition/${cId}${uId ? `/user/${uId}` : ""}`
-  );
-
-  const { start_date, end_date, name, type } = data ?? ({} as ICompetition);
-
-  return { competition: data, start_date, end_date, name, type };
-};
-
 export const useUserCompetitions = () => {
   const { user } = useAuth0();
 

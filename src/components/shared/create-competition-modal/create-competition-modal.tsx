@@ -1,8 +1,10 @@
 import './create-competition-modal.scss';
 
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-import { ICreateCompetitionPayload } from '../../pages/user-competitions-page/user-competitions-page';
+import { ICreateCompetitionPayload } from '../../../models/data-models';
+import useCreateCompetitionQuery from '../../../queries/create-competition-query';
 import MultiStepModal from '../multi-step-modal/multi-step-modal';
 import ChooseDatesStep from './choose-dates-step/choose-dates-step';
 import ChooseTypeStep from './choose-type-step/choose-type-step';
@@ -19,10 +21,16 @@ export const CreateCompetitionModal: React.FC<ICreateCompetitionModal> = ({
   setShow,
 }) => {
   const [payload, setPayload] = useState<ICreateCompetitionPayload>({});
+  const createCompetitionQuery = useCreateCompetitionQuery();
+  const history = useHistory();
 
   const handleSubmit = (payload: ICreateCompetitionPayload) => {
-    console.log("--handle submit invoked--", payload);
-    // use payload for whatever request needed
+    createCompetitionQuery(payload)
+      .then((data) => {
+        history.push(`competition/${data.id}`);
+        setShow(false);
+      })
+      .catch((e) => console.log("Error creating competition", e));
   };
 
   return (

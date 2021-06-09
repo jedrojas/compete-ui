@@ -11,17 +11,15 @@ import Leaderboard from '../leaderboard/leaderboard';
 export interface ILeaderboardWidget {}
 
 export const LeaderboardWidget: React.FC<ILeaderboardWidget> = () => {
-  const [leaderboardType, setLeaderboardType] = useState("team");
+  const [leaderboardType, setLeaderboardType] = useState("individual");
   const { data } = useLeaderboard(leaderboardType);
 
   return (
     <BaseWidget>
       <BaseWidget.Header>
-        <Col xs="12" className="my-2">
-          <LeaderboardTypeButtons
-            handleTypeButtonClick={(type) => setLeaderboardType(type)}
-          />
-        </Col>
+        <LeaderboardTypeButtons
+          handleTypeButtonClick={(type) => setLeaderboardType(type)}
+        />
       </BaseWidget.Header>
       <BaseWidget.Body>
         <Col xs="12">

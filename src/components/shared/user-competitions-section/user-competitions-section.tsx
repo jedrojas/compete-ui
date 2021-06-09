@@ -37,7 +37,7 @@ export const UserCompetitionsSection: React.FC<IUserCompetitionsSection> = () =>
             >
               <BaseNeoButton
                 className="d-flex h-75 w-100 align-items-center mx-2"
-                onClick={() => history.push(`/competitions/${competition.id}`)}
+                onClick={() => history.push(`/competition/${competition.id}`)}
               >
                 {/* show icon if exists, else show unique color */}
                 {/* TODO: let user select color if they want */}

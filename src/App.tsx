@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { AuthProvider } from './components/contexts/AuthProvider';
 import { UserProvider } from './components/contexts/user-context';
-import CompetitionsPage from './components/pages/competitions-page/competitions-page';
+import CompetitionPage from './components/pages/competition-page/competition-page';
 import DashboardPage from './components/pages/dashboard-page/dashboard-page';
 import HomePage from './components/pages/home-page/home-page';
 import { LandingPage } from './components/pages/landing-page/landing-page';
@@ -17,19 +17,19 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <UserProvider>
-          <Switch>
-            <Route exact path="/">
-              <LandingPage />
-            </Route>
+        <Switch>
+          <Route exact path="/">
+            <LandingPage />
+          </Route>
+          <UserProvider>
             <Route path="/dashboard">
               <DashboardPage />
             </Route>
             <Route exact path="/competitions">
               <UserCompetitionsPage />
             </Route>
-            <Route path="/competitions/:cid">
-              <CompetitionsPage />
+            <Route path="/competition/:cid">
+              <CompetitionPage />
             </Route>
             <Route path="/teams">
               <HomePage />
@@ -37,8 +37,8 @@ function App() {
             <Route path="/settings">
               <SettingsPage />
             </Route>
-          </Switch>
-        </UserProvider>
+          </UserProvider>
+        </Switch>
       </Router>
     </AuthProvider>
   );
