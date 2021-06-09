@@ -77,7 +77,7 @@ export interface ITeam {
 export interface IUserCompetitionData {
   isUserAdmin: boolean;
   isUserParticipant: boolean;
-  userHasTeam: boolean;
+  usersTeamId: string | null;
   activities: IActivity[];
   points: number;
 }

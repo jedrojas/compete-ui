@@ -16,13 +16,8 @@ export interface IActivityWidget {}
 export const ActivityWidget: React.FC<IActivityWidget> = ({ children }) => {
   const { cid } = useCompetitionState();
 
-  // TODO: consider creating adding a user competition activities
-  // context for these variables
   const { activities, numActivities, points } = useActivityWidgetData(cid);
 
-  // TODO: this should be added to user_competition table
-  // If no targetPoints, prompt user to set goal
-  // default progress percentage to 5%, but display correct points
   const targetPoints = 5000;
 
   return (

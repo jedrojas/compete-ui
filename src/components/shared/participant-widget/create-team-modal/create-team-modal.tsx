@@ -59,6 +59,7 @@ export const CreateTeamModal: React.FC<ICreateTeamModal> = ({
               joinTeamQuery({ tid: team.id })
             );
             setTimeout(() => setShow(false), 1000);
+            window.location.reload();
           }}
           disabled={watch("teamName") === ""}
         >

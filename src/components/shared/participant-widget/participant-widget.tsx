@@ -14,11 +14,13 @@ import { ParticipantWidgetHeader } from './participant-widget-header/participant
 export interface IParticipantWidget {}
 
 export const ParticipantWidget: React.FC<IParticipantWidget> = () => {
-  const { cid, userHasTeam, type } = useCompetitionState();
+  const { cid, usersTeamId, type } = useCompetitionState();
   const [listType, setListType] = useState(ICompetitionType.INDIVIDUAL);
   const { data, loading } = useGetCompetitionParticipantsQuery(cid, listType);
   const [showCreateTeamModal, setShowCreateTeamModal] = useState(false);
 
+  console.log('--data--', data)
+  console.log('--utid--', usersTeamId)
   return (
     <>
       <BaseWidget>
@@ -31,25 +33,30 @@ export const ParticipantWidget: React.FC<IParticipantWidget> = () => {
             {data?.length && !loading ? (
               listType === ICompetitionType.INDIVIDUAL ? (
                 data.map((participant: any) => (
-                  <div>{participant.first_name}</div>
+                  <Row className="m-2">{participant.first_name}</Row>
                 ))
               ) : (
-                data.map((participant: any) => (
-                  <Row>
-                    <Col xs="8">{participant.name}</Col>
+                data.map((team: any) => (
+                  <Row className="m-2 align-items-center">
+                    <Col xs="8" className="pl-0">
+                      {team.name}
+                    </Col>
                     <Col xs="4">
-                      {!userHasTeam && (
+                      {!usersTeamId && (
                         <Button className="my-2">{"Join"}</Button>
+                      )}
+                                            {usersTeamId === team.team_id && (
+                        <Button className="my-2">{"Leave"}</Button>
                       )}
                     </Col>
                   </Row>
                 ))
               )
             ) : (
-              <Row>No participants have joined yet</Row>
+              <Col>No participants have joined yet</Col>
             )}
-            {type === ICompetitionType.TEAM && (
-              <Row>
+            {type === ICompetitionType.TEAM && listType === "team" && !usersTeamId && (
+              <Row className="m-2">
                 <Button onClick={() => setShowCreateTeamModal(true)}>
                   Create Team
                 </Button>

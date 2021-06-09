@@ -17,7 +17,10 @@ export const LeaderboardAthleteLineItem: React.FC<ILeaderboardAthleteLineItem> =
   pos,
 }) => {
   return (
-    <Row className="leaderboard-li font-montserrat align-items-center my-2">
+    <Row
+      noGutters
+      className="leaderboard-li font-montserrat align-items-center my-2"
+    >
       <Col xs="1">{pos}</Col>
       <Col xs="8">{data.first_name}</Col>
       <Col xs="3" className="d-flex justify-content-end">

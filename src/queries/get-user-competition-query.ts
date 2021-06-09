@@ -16,13 +16,13 @@ export function useGetUserCompetitionQuery(cid: string) {
     `http://localhost:3000/user-competition/${cid}`,
     headers
   );
-  const { isUserAdmin, isUserParticipant, userHasTeam, activities, points } =
+  const { isUserAdmin, isUserParticipant, usersTeamId, activities, points } =
     data ?? {};
 
   return {
     isUserAdmin,
     isUserParticipant,
-    userHasTeam,
+    usersTeamId,
     activities,
     points,
     loading,

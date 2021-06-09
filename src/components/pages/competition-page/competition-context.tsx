@@ -15,7 +15,7 @@ interface ICompetitionState {
   status?: CompetitionStatus;
   isUserAdmin?: boolean;
   isUserParticipant?: boolean;
-  userHasTeam?: boolean;
+  usersTeamId?: string | null;
   activities?: IActivity[];
   points?: number;
 }
@@ -55,11 +55,9 @@ const useCompetitionContext = () => {
   const {
     isUserAdmin,
     isUserParticipant,
-    userHasTeam,
+    usersTeamId,
     activities,
     points,
-    // loading,
-    // error,
   } = useGetUserCompetitionQuery(cid);
 
   const status = useStatus(start_date, end_date);
@@ -74,7 +72,7 @@ const useCompetitionContext = () => {
       status,
       isUserAdmin,
       isUserParticipant,
-      userHasTeam,
+      usersTeamId,
       activities,
       points,
     }),
@@ -89,7 +87,7 @@ const useCompetitionContext = () => {
       start_date,
       status,
       type,
-      userHasTeam,
+      usersTeamId,
     ]
   );
 };

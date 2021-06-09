@@ -6,7 +6,7 @@ import LeaderboardWidget from '../../../shared/leaderboard-widget/leaderboard-wi
 import ParticipantWidget from '../../../shared/participant-widget/participant-widget';
 import { useCompetitionState } from '../competition-context';
 import AdminParticipantWidget from './admin-participant-widget/admin-participant-widget';
-import CompetitionTimer from './competition-details/competition-details';
+import CompetitionDetails from './competition-details/competition-details';
 
 export interface ICompetitionAdminView {}
 
@@ -16,8 +16,8 @@ export const CompetitionAdminView: React.FC<ICompetitionAdminView> = () => {
   return isUserAdmin ? (
     <BasePageLayout pageHeader={name}>
       <Col xs="4">
-        <CompetitionTimer />
         <AdminParticipantWidget />
+        <CompetitionDetails />
       </Col>
       <Col xs="4">
         <LeaderboardWidget />

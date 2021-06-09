@@ -17,12 +17,13 @@ export const ParticipantWidgetHeader: React.FC<IParticipantWidgetHeader> = ({
   listType,
   setListType,
 }) => {
-  const { type } = useCompetitionState();
+  const { type, isUserParticipant } = useCompetitionState();
+
   return (
     <BaseWidget.Header>
-      <Row noGutters>
+      <Row noGutters className="m-2">
         <Col xs="6">Participants</Col>
-        {type === ICompetitionType.TEAM && (
+        {type === ICompetitionType.TEAM && isUserParticipant && (
           <Col xs="6" className="d-flex flex-row font-size-12">
             <BaseNeoButton
               onClick={() => setListType(ICompetitionType.TEAM)}

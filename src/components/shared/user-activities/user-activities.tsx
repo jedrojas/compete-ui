@@ -13,7 +13,6 @@ export interface IUserActivities {
 export const UserActivities: React.FC<IUserActivities> = ({ activities }) => {
   return activities ? (
     <>
-      {/* TODO: Abstract this into its own component */}
       <Row className="m-2 py-2 font-montserrat user-activity-li uat-header">
         <Col
           xs="5"
@@ -27,12 +26,6 @@ export const UserActivities: React.FC<IUserActivities> = ({ activities }) => {
             {"Distance (meters)"}
           </Col>
         </Col>
-        {/* 
-        <Col xs="2">
-          <Row xs="1">
-            <Col className="d-flex justify-content-end">{"Points"}</Col>
-          </Row>
-        </Col> */}
 
         <Col xs="3">
           <Col className="d-flex justify-content-end">{"Date"}</Col>
@@ -43,7 +36,9 @@ export const UserActivities: React.FC<IUserActivities> = ({ activities }) => {
       })}
     </>
   ) : (
-    <>"Loading"</>
+    <Row className="justify-content-center m-2 py-2 font-montserrat user-activity-li">
+      No activities have been added yet!
+    </Row>
   );
 };
 

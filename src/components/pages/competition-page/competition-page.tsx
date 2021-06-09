@@ -13,7 +13,6 @@ export const CompetitionPage: React.FC<ICompetitionPage> = () => {
 
   return (
     <CompetitionProvider>
-      {/* <BasePageLayout> */}
       <Switch>
         <Route exact path={path}>
           <CompetitionParticipantView />
@@ -23,7 +22,6 @@ export const CompetitionPage: React.FC<ICompetitionPage> = () => {
           <CompetitionAdminView />
         </Route>
       </Switch>
-      {/* </BasePageLayout> */}
     </CompetitionProvider>
   );
 };
