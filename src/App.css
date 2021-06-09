@@ -1,0 +1,112 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
+}
+
+.sub-title {
+  color: #3b7080;
+  font-family: "Montserrat";
+  font-size: 12px;
+}
+
+.font-size-12 {
+  font-size: 12px;
+}
+
+.form-text-field {
+  border: none;
+  background: transparent;
+  border-bottom: 2px solid #ffc033;
+}
+
+*:focus {
+  outline: none;
+}
+
+.sign-up-submit-btn {
+  border: none;
+  background-color: transparent;
+}
+
+h1 {
+  color: #3b7080;
+  font-family: "Montserrat";
+  font-size: 20px;
+}
+
+h2 {
+  color: #3b7080;
+  font-family: "Montserrat";
+  font-size: 36px !important;
+}
+
+h3 {
+  color: #3b7080;
+  font-family: "Montserrat";
+  font-size: 18px !important;
+}
+
+h4 {
+  /* color: #3b7080; */
+  font-family: "Montserrat";
+  font-size: 16px !important;
+}

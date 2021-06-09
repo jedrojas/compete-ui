@@ -1,0 +1,29 @@
+// .example-appear {
+//   opacity: 0.01;
+// }
+
+// .example-appear.example-appear-active {
+//   opacity: 1;
+//   transition: opacity 0.5s ease-in;
+// }
+
+.example-enter {
+  transform: translate(100%);
+  opacity: 0.01;
+}
+.example-enter.example-enter-active {
+  transform: translate(0%);
+  opacity: 1;
+  transition: opacity 1000ms ease-in-out;
+}
+
+.example-leave {
+  transform: translate(0%);
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  transform: translate(-100%);
+  opacity: 0.01;
+  transition: opacity 1000ms ease-in-out;
+}

@@ -1,0 +1,24 @@
+.neo-btn {
+  box-shadow: 6px 6px 16px 0 rgba(148, 148, 148, 0.51),
+    -6px -6px 16px 0 rgba(255, 255, 255, 0.53);
+  color: #3b7080;
+  font-weight: bold;
+}
+
+.neo-btn-rounded {
+  border-radius: 10px;
+}
+
+.active .nav-link-btn {
+  box-shadow: inset -6px -6px 16px 0 rgba(255, 255, 255, 0.53),
+    inset 6px 6px 16px 0 rgba(148, 148, 148, 0.51);
+}
+
+.pressed-btn {
+  box-shadow: inset -6px -6px 16px 0 rgba(255, 255, 255, 0.53),
+    inset 6px 6px 16px 0 rgba(148, 148, 148, 0.51) !important;
+}
+
+.landing-page-btn:hover {
+  transform: scale(1.15);
+}

@@ -1,0 +1,32 @@
+.side-bar {
+  transition: 0.5s width;
+  width: 50px;
+  z-index: 1;
+
+  .fade-title {
+    opacity: 0%;
+    transition: 0.5s opacity;
+  }
+
+  .fade-title.show {
+    transition-delay: 0.75s;
+    opacity: 100%;
+  }
+}
+
+.side-bar:hover {
+  transition-delay: 0.75s;
+  width: 235px;
+}
+
+.side-bar-item {
+  background: transparent;
+  color: #3b7080;
+}
+
+.side-bar-item:hover {
+  // color: white;
+  background: #3b7080;
+  color: white;
+  text-decoration: none;
+}
