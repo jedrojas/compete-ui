@@ -9,12 +9,14 @@ import { SideBar } from '../../shared/side-bar/side-bar';
 export interface IBasePageLayout {
   flexRow?: boolean;
   className?: string;
+  pageHeader?: string;
 }
 
 export const BasePageLayout: React.FC<IBasePageLayout> = ({
   children,
   flexRow,
   className,
+  pageHeader,
 }) => {
   return (
     <Container
@@ -27,7 +29,12 @@ export const BasePageLayout: React.FC<IBasePageLayout> = ({
     >
       <Row noGutters>
         <SideBar />
-        <Col xs="11" className="position-absolute" style={{ left: "75px" }}>
+        {pageHeader && (
+          <Row className="justify-content-center w-100 mt-4">
+            <h2>{pageHeader}</h2>
+          </Row>
+        )}
+        <Col xs={{ span: "10", offset: "1" }} className="d-flex">
           {children}
         </Col>
       </Row>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
+import { Button, Col } from 'react-bootstrap';
 
 import BasePageLayout from '../../bases/base-page-layout/base-page-layout';
 import { useUserCompetitions } from '../../hooks/competitions-queries';
@@ -16,12 +16,8 @@ export const UserCompetitionsPage: React.FC<IUserCompetitionsPage> = () => {
   const [showFindModal, setShowFindModal] = useState(false);
 
   return (
-    <BasePageLayout>
+    <BasePageLayout pageHeader="Competitions">
       <Col>
-        <Row className="mt-4">
-          <h2>Competitions</h2>
-        </Row>
-
         {userCompetitions.length ? (
           userCompetitions.map((competition) => (
             <CompetitionCard competition={competition} />

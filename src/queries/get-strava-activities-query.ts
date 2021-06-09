@@ -23,7 +23,6 @@ export function useGetStravaActivities() {
     [token, user]
   );
 
-  // TODO - Jed: goodness gracious please fix this up
   const getStravaActivities = useCallback(async () => {
     setLoading(true);
 

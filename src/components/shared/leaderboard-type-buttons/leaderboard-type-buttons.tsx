@@ -14,8 +14,8 @@ export interface ILeaderboardTypeButtons {
 export const LeaderboardTypeButtons: React.FC<ILeaderboardTypeButtons> = ({
   handleTypeButtonClick,
 }) => {
-  const [isTeamPressed, setIsTeamPressed] = useState<boolean>(true);
-  const [isAthletePressed, setIsAthletePressed] = useState<boolean>();
+  const [isTeamPressed, setIsTeamPressed] = useState<boolean>(false);
+  const [isAthletePressed, setIsAthletePressed] = useState<boolean>(true);
   const { type } = useCompetitionState();
 
   const handleClick = (type: string) => {

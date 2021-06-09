@@ -34,6 +34,8 @@ export const ChooseTypeStep: React.FC<ChooseTypeStepProps> = ({ stepNum }) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        <label>Note: This cannot be changed later</label>
+
         <BaseNeoButton
           title={"Team Competition"}
           onClick={() => handleTypeSelected(ICompetitionType.TEAM)}

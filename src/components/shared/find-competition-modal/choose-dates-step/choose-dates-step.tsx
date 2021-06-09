@@ -2,7 +2,7 @@ import './choose-dates-step.scss';
 
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Modal, Row } from 'react-bootstrap';
 import { DateRange } from 'react-date-range';
 

@@ -10,7 +10,7 @@ export const LoadingSpinnerContainer: React.FC<ILoadingSpinnerContainer> = ({
   loading,
 }) => {
   if (loading) {
-    return <Spinner animation="grow" />;
+    return <Spinner size={"sm"} animation="grow" />;
   }
 
   return <>{children}</>;

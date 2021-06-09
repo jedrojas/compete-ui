@@ -20,10 +20,10 @@ export const LeaderboardTeamLineItem: React.FC<ILeaderboardTeamLineItem> = ({
   return (
     <Row className="leaderboard-li font-montserrat align-items-center my-2">
       <Col xs="1">{pos}</Col>
-      <Col xs="2">
+      {/* <Col xs="2">
         <img src={monstarsImg} alt="imgg" height={"35px"} width={"35px"} />
-      </Col>
-      <Col xs="6">{data.name}</Col>
+      </Col> */}
+      <Col xs="8">{data.name}</Col>
       <Col xs="3" className="d-flex justify-content-end">
         {data.points}
         <FontAwesomeIcon icon={faCaretUp} className="my-auto ml-2" />

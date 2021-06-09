@@ -11,7 +11,7 @@ import Leaderboard from '../leaderboard/leaderboard';
 export interface ILeaderboardWidget {}
 
 export const LeaderboardWidget: React.FC<ILeaderboardWidget> = () => {
-  const [leaderboardType, setLeaderboardType] = useState("team");
+  const [leaderboardType, setLeaderboardType] = useState("individual");
   const { data } = useLeaderboard(leaderboardType);
 
   return (

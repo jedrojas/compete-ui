@@ -11,10 +11,14 @@ import { useMultiStepModalState } from '../../../contexts/multi-step-modal-conte
 
 export interface NameAndIconStepProps {
   stepNum?: number;
+  update?: boolean;
+  defaultName?: string;
 }
 
 export const NameAndIconStep: React.FC<NameAndIconStepProps> = ({
   stepNum,
+  update,
+  defaultName,
 }) => {
   const { register, watch } = useForm();
   const [charsUsed, setCharsUsed] = useState(0);
@@ -31,7 +35,7 @@ export const NameAndIconStep: React.FC<NameAndIconStepProps> = ({
     <>
       <Modal.Header closeButton className="justify-content-center">
         <Modal.Title className="position-absolute" role="heading">
-          Create Competition
+          {update ? "Update Competition" : "Create Competition"}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -42,7 +46,7 @@ export const NameAndIconStep: React.FC<NameAndIconStepProps> = ({
           placeholder="Competition Name"
           ref={register({ required: true, maxLength: 40 })}
           className="w-100 form-text-field my-2"
-          defaultValue={payload?.name ?? ""}
+          defaultValue={defaultName ?? payload?.name ?? ""}
         />
         <Row noGutters>
           <span

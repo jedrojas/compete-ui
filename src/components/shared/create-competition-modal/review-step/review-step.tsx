@@ -10,9 +10,10 @@ import { usePrintCompDetails } from './hooks/print-comp-details';
 
 export interface ReviewStepProps {
   stepNum?: number;
+  update?: boolean;
 }
 
-export const ReviewStep: React.FC<ReviewStepProps> = ({ stepNum }) => {
+export const ReviewStep: React.FC<ReviewStepProps> = ({ stepNum, update }) => {
   const {
     stepCount,
     setStepCount,
@@ -48,7 +49,7 @@ export const ReviewStep: React.FC<ReviewStepProps> = ({ stepNum }) => {
           className="cursor-pointer ml-auto"
           onClick={() => onSubmit(payload)}
         >
-          Create
+          {update ? "Update" : "Create"}
           <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
         </Button>
       </Modal.Footer>

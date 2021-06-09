@@ -80,6 +80,7 @@ const UserProvider = ({ children }) => {
                 last_name: data.lastName,
               });
               setShowSignUpModal(false);
+              window.location.reload();
             })}
           >
             <Row>

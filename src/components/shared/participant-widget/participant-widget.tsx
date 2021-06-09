@@ -14,7 +14,7 @@ import { ParticipantWidgetHeader } from './participant-widget-header/participant
 export interface IParticipantWidget {}
 
 export const ParticipantWidget: React.FC<IParticipantWidget> = () => {
-  const { cid, userHasTeam } = useCompetitionState();
+  const { cid, userHasTeam, type } = useCompetitionState();
   const [listType, setListType] = useState(ICompetitionType.INDIVIDUAL);
   const { data, loading } = useGetCompetitionParticipantsQuery(cid, listType);
   const [showCreateTeamModal, setShowCreateTeamModal] = useState(false);
@@ -48,11 +48,13 @@ export const ParticipantWidget: React.FC<IParticipantWidget> = () => {
             ) : (
               <Row>No participants have joined yet</Row>
             )}
-            <Row>
-              <Button onClick={() => setShowCreateTeamModal(true)}>
-                Create Team
-              </Button>
-            </Row>
+            {type === ICompetitionType.TEAM && (
+              <Row>
+                <Button onClick={() => setShowCreateTeamModal(true)}>
+                  Create Team
+                </Button>
+              </Row>
+            )}
           </BaseWidget.Body>
         </LoadingSpinnerContainer>
       </BaseWidget>

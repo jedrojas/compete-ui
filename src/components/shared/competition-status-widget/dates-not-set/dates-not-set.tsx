@@ -7,7 +7,7 @@ import { CompetitionStatusComponentProps } from '../../../../models/data-models'
 import { useModal } from '../../../hooks/modal-hooks';
 import {
   SetDatesModal,
-} from '../../../pages/competition-page/competition-admin-view/competition-timer/set-dates-modal/set-dates-modal';
+} from '../../../pages/competition-page/competition-admin-view/competition-details/set-dates-modal/set-dates-modal';
 import { useCompetitionState } from '../../../pages/competition-page/competition-context';
 
 export const DatesNotSet: React.FC<CompetitionStatusComponentProps> = ({

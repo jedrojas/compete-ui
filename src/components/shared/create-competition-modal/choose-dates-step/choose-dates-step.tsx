@@ -2,7 +2,7 @@ import './choose-dates-step.scss';
 
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Modal, Row } from 'react-bootstrap';
 import { DateRange } from 'react-date-range';
 
@@ -10,10 +10,14 @@ import { useMultiStepModalState } from '../../../contexts/multi-step-modal-conte
 
 export interface ChooseDatesStepProps {
   stepNum?: number;
+  defaultStartDate?: Date;
+  defaultEndDate?: Date;
 }
 
 export const ChooseDatesStep: React.FC<ChooseDatesStepProps> = ({
   stepNum,
+  defaultStartDate,
+  defaultEndDate,
 }) => {
   const {
     stepCount,
@@ -21,8 +25,12 @@ export const ChooseDatesStep: React.FC<ChooseDatesStepProps> = ({
     payload,
     setPayload,
   } = useMultiStepModalState();
-  const [startDate, setStartDate] = useState<Date>(new Date());
-  const [endDate, setEndDate] = useState<Date>(new Date());
+  const [startDate, setStartDate] = useState<Date>(
+    defaultStartDate ? new Date(defaultStartDate) : new Date()
+  );
+  const [endDate, setEndDate] = useState<Date>(
+    defaultEndDate ? new Date(defaultEndDate) : new Date()
+  );
 
   const [state, setState] = useState([
     {

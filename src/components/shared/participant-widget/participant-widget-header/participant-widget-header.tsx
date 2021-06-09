@@ -21,22 +21,22 @@ export const ParticipantWidgetHeader: React.FC<IParticipantWidgetHeader> = ({
   return (
     <BaseWidget.Header>
       <Row noGutters>
-        <Col xs="12">Participants</Col>
+        <Col xs="6">Participants</Col>
         {type === ICompetitionType.TEAM && (
-          <Col xs="12" className="d-flex flex-row font-size-12">
+          <Col xs="6" className="d-flex flex-row font-size-12">
             <BaseNeoButton
               onClick={() => setListType(ICompetitionType.TEAM)}
               className="mx-2"
               pressed={listType === ICompetitionType.TEAM}
             >
-              Team
+              Teams
             </BaseNeoButton>
             <BaseNeoButton
               onClick={() => setListType(ICompetitionType.INDIVIDUAL)}
               className="ml-2"
               pressed={listType === ICompetitionType.INDIVIDUAL}
             >
-              Athlete
+              Athletes
             </BaseNeoButton>
           </Col>
         )}

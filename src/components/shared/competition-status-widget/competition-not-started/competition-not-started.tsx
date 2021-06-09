@@ -7,7 +7,7 @@ import { CompetitionStatusComponentProps } from '../../../../models/data-models'
 import { useModal } from '../../../hooks/modal-hooks';
 import {
   SetDatesModal,
-} from '../../../pages/competition-page/competition-admin-view/competition-timer/set-dates-modal/set-dates-modal';
+} from '../../../pages/competition-page/competition-admin-view/competition-details/set-dates-modal/set-dates-modal';
 import { useCompetitionState } from '../../../pages/competition-page/competition-context';
 import { formatDate } from '../../../utils/date-formatter';
 
@@ -23,6 +23,7 @@ export const CompetitionNotStarted: React.FC<CompetitionStatusComponentProps> = 
         <Row noGutters>{`Competition starts: ${formatDate(start_date!)}`}</Row>
         <Row noGutters>{`Competition ends: ${formatDate(end_date!)}`}</Row>
 
+        {/* TODO - Jed: remove this, should be unused */}
         <Row noGutters>
           {isAdminPage && isUserAdmin && (
             <Button onClick={() => setShow(true)}>

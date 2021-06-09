@@ -43,6 +43,7 @@ export const AdminParticipantWidget: React.FC<IAdminParticipantWidget> = () => {
               onClick={() =>
                 history.push(url.substring(0, url.lastIndexOf("/")))
               }
+              className="m-2"
             >
               View my stats
             </Button>

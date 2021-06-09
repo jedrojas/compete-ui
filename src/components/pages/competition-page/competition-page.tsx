@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 
-import BasePageLayout from '../../bases/base-page-layout/base-page-layout';
 import CompetitionAdminView from './competition-admin-view/competition-admin-view';
 import { CompetitionProvider } from './competition-context';
 import CompetitionParticipantView from './competition-participant-view/competition-participant-view';
@@ -14,17 +13,17 @@ export const CompetitionPage: React.FC<ICompetitionPage> = () => {
 
   return (
     <CompetitionProvider>
-      <BasePageLayout>
-        <Switch>
-          <Route exact path={path}>
-            <CompetitionParticipantView />
-            <CompetitionPrivateView />
-          </Route>
-          <Route exact path={`${path}/admin`}>
-            <CompetitionAdminView />
-          </Route>
-        </Switch>
-      </BasePageLayout>
+      {/* <BasePageLayout> */}
+      <Switch>
+        <Route exact path={path}>
+          <CompetitionParticipantView />
+          <CompetitionPrivateView />
+        </Route>
+        <Route exact path={`${path}/admin`}>
+          <CompetitionAdminView />
+        </Route>
+      </Switch>
+      {/* </BasePageLayout> */}
     </CompetitionProvider>
   );
 };

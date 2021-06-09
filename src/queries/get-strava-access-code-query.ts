@@ -19,8 +19,6 @@ export function useStravaAccessCode() {
       grant_type: "authorization_code",
     };
 
-    // TODO - Jed: this also gives expiration date.
-    // Retrieve from here if needed in the future
     post("https://www.strava.com/oauth/token", payload)
       .then((data) => {
         if (data.access_token) {
