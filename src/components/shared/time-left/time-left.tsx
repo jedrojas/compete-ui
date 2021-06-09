@@ -3,7 +3,7 @@ import './time-left.scss';
 import React from 'react';
 
 import { CompetitionStatus } from '../../../models/enums';
-import { useStatus } from '../../pages/user-competitions-page/user-competition-context';
+import { useStatus } from './get-time-left';
 
 export interface ITimeLeft {
   start_date?: Date;

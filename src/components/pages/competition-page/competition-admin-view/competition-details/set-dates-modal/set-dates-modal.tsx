@@ -16,7 +16,7 @@ export interface ISetDatesModal {
 
 export const SetDatesModal: React.FC<ISetDatesModal> = ({ show, setShow }) => {
   const { cid, name, type, start_date, end_date } = useCompetitionState();
-  const { updateCompetitionQuery, loading } = useUpdateCompetitionQuery();
+  const { updateCompetitionQuery } = useUpdateCompetitionQuery();
 
   const [startDate, setStartDate] = useState<Date>(
     start_date ? new Date(start_date) : new Date()
