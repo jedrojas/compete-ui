@@ -29,35 +29,36 @@ export const FindCompetitionModal: React.FC<IFindCompetitionModal> = ({
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {data &&
-          data.map((competition) => (
-            <span key={competition.id}>
-              <BaseNeoButton
-                className="d-flex h-75 w-100 align-items-center mx-2"
-                onClick={() => history.push(`/competition/${competition.id}`)}
-              >
-                <Col
-                  xs="3"
-                  className="mr-3"
-                  style={{
-                    maxWidth: "50px",
-                    height: "50px",
-                    borderRadius: "2em",
-                    backgroundColor: generateColor(competition.id),
-                  }}
-                />
-                <Col xs="8" style={{ right: "0", height: "50px" }}>
-                  <Row>
-                    {competition.name}
-                    {competition.is_joined ? (
-                      <span className="ml-2">{`(joined)`}</span>
-                    ) : null}
-                  </Row>
-                  <Row>{competition.type}</Row>
-                </Col>
-              </BaseNeoButton>
-            </span>
-          ))}
+        {data?.length
+          ? data.map((competition) => (
+              <span key={competition.id}>
+                <BaseNeoButton
+                  className="d-flex h-75 w-100 align-items-center mx-2"
+                  onClick={() => history.push(`/competition/${competition.id}`)}
+                >
+                  <Col
+                    xs="3"
+                    className="mr-3"
+                    style={{
+                      maxWidth: "50px",
+                      height: "50px",
+                      borderRadius: "2em",
+                      backgroundColor: generateColor(competition.id),
+                    }}
+                  />
+                  <Col xs="8" style={{ right: "0", height: "50px" }}>
+                    <Row>
+                      {competition.name}
+                      {competition.is_joined ? (
+                        <span className="ml-2">{`(joined)`}</span>
+                      ) : null}
+                    </Row>
+                    <Row>{competition.type}</Row>
+                  </Col>
+                </BaseNeoButton>
+              </span>
+            ))
+          : "No competitions have been added yet"}
       </Modal.Body>
     </BaseModal>
   );

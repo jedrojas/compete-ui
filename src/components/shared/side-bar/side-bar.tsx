@@ -2,7 +2,8 @@ import './side-bar.scss';
 
 import { faFlagCheckered, faHome, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import classnames from 'classnames';
+import React, { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
@@ -11,27 +12,33 @@ import BaseNeoCard from '../../bases/base-neo-card/base-neo-card';
 export interface ISideBar {}
 
 export const SideBar: React.FC<ISideBar> = () => {
-  // TODO - Jed: modularize this page
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <Row
       noGutters
       className="side-bar position-absolute"
       style={{ height: "100vh" }}
+      onMouseEnter={() => setIsExpanded(true)}
+      onMouseLeave={() => setIsExpanded(false)}
     >
       <BaseNeoCard
         className="d-flex flex-column overflow-hidden h-100 position-sticky"
         rounded={false}
       >
-        <Row
-          noGutters
-          className="font-montserrat color-teal my-3 px-auto cursor-pointer justify-content-center"
+        <div
+          // noGutters
+          className="font-montserrat color-teal my-3 pl-2 px-auto cursor-pointer justify-content-center"
           style={{
             fontSize: "44px",
             borderBottom: "2px solid #ffc033",
           }}
         >
-          C
-        </Row>
+          <span>C</span>
+          <span className={classnames("fade-title", { show: isExpanded })}>
+            ompete
+          </span>
+        </div>
 
         <NavLink to="/dashboard" className="px-auto" activeClassName="active">
           <Row

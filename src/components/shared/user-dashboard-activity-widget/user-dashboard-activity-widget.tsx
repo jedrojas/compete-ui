@@ -28,7 +28,7 @@ export const UserDashboardActivityWidget: React.FC<IUserDashboardActivityWidget>
       </BaseWidget.Header>
       <BaseWidget.Body>
         <LoadingSpinnerContainer loading={activitiesLoading}>
-          {data.length ? (
+          {data?.length ? (
             <>
               <Row className="m-2 py-2 font-montserrat user-activity-li uat-header">
                 <Col
@@ -85,8 +85,8 @@ export const UserDashboardActivityWidget: React.FC<IUserDashboardActivityWidget>
 
         {stravaAccessToken ? (
           <Button
-            onClick={() =>
-              getStravaActivities().then(() => window.location.reload())
+            onClick={
+              () => getStravaActivities() //.then(() => window.location.reload())
             }
             className="m-2"
           >

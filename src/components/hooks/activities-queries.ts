@@ -10,7 +10,7 @@ export const useUserActivities = () => {
     `http://localhost:3000/user/${user?.sub}/activities`
   );
 
-  return { data: data?.slice(0, 10) ?? [], loading, error };
+  return { data: data?.length ? data.slice(0, 10) : [], loading, error };
 };
 
 export const useUserActivitiesByCompetitionQuery = (cId: string) => {

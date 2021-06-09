@@ -56,10 +56,10 @@ export const CreateTeamModal: React.FC<ICreateTeamModal> = ({
           className="cursor-pointer"
           onClick={() => {
             createTeamQuery({ name: watch("teamName"), cid }).then((team) =>
-              joinTeamQuery({ tid: team.id })
+              joinTeamQuery({ tid: team.id }).then(() =>
+                window.location.reload()
+              )
             );
-            setTimeout(() => setShow(false), 1000);
-            window.location.reload();
           }}
           disabled={watch("teamName") === ""}
         >

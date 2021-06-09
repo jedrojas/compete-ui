@@ -6,7 +6,7 @@ import { ICreateUserTeamPayload } from '../models/data-models';
 export function useJoinTeamQuery() {
   const post = usePostCallback<never, ICreateUserTeamPayload>();
 
-  const useJoinTeamQuery = useCallback(
+  const JoinTeamQuery = useCallback(
     (payload: ICreateUserTeamPayload) => {
       const accessToken = localStorage.getItem("access_token");
       const headers: Record<string, string> = {
@@ -18,7 +18,7 @@ export function useJoinTeamQuery() {
     [post]
   );
 
-  return useJoinTeamQuery;
+  return JoinTeamQuery;
 }
 
 export default useJoinTeamQuery;

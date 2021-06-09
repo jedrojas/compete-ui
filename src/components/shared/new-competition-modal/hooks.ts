@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef } from 'react';
+import { useMemo, useRef } from 'react';
 
 import { NewCompetitionStepConfig } from '../../../models/data-models';
 import { INewCompetitionStep } from '../../../models/enums';

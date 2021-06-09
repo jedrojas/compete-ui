@@ -18,7 +18,7 @@ export const CompetitionCard: React.FC<ICompetitionCard> = ({
   competition,
 }) => {
   return (
-    <Link to={`/competition/${competition.id}`}>
+    <Link to={`/competition/${competition.id}`} style={{ color: "black" }}>
       <NeoButton className="my-3" height="85px">
         <Row className="w-100">
           <Col xs="3" className="ml-4 my-auto">

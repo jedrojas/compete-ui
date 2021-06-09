@@ -77,7 +77,8 @@ export interface ITeam {
 export interface IUserCompetitionData {
   isUserAdmin: boolean;
   isUserParticipant: boolean;
-  usersTeamId: string | null;
+  userTeamId: string | null;
+  currTeamId: string | null;
   activities: IActivity[];
   points: number;
 }
@@ -138,6 +139,10 @@ export interface ICreateTeamPayload {
 
 export interface ICreateUserTeamPayload {
   tid: string;
+}
+
+export interface IDeleteUserTeamPayload {
+  utid?: string | null;
 }
 
 export type multiStepModalPayloadTypes = ICreateCompetitionPayload;

@@ -2,11 +2,21 @@
   transition: 0.5s width;
   width: 50px;
   z-index: 1;
+
+  .fade-title {
+    opacity: 0%;
+    transition: 0.5s opacity;
+  }
+
+  .fade-title.show {
+    transition-delay: 0.75s;
+    opacity: 100%;
+  }
 }
 
 .side-bar:hover {
   transition-delay: 0.75s;
-  width: 200px;
+  width: 235px;
 }
 
 .side-bar-item {

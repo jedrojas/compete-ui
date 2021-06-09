@@ -12,6 +12,7 @@ export interface ICompetitionPrivateView {}
 export const CompetitionPrivateView: React.FC<ICompetitionPrivateView> = () => {
   const { name, isUserAdmin, isUserParticipant } = useCompetitionState();
 
+  console.log("--is user participant--", isUserParticipant);
   if (!isUserAdmin && !isUserParticipant)
     return (
       <BasePageLayout pageHeader={name}>
