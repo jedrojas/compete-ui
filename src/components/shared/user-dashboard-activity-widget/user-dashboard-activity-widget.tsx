@@ -6,6 +6,7 @@ import format from 'date-fns/format';
 import React from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 
+import { FRONTEND_ENDPOINT } from '../../../config';
 import { sbrIconMap } from '../../../models/data-models';
 import { useGetStravaActivities } from '../../../queries/get-strava-activities-query';
 import BaseWidget from '../../bases/base-widget/base-widget';
@@ -97,7 +98,7 @@ export const UserDashboardActivityWidget: React.FC<IUserDashboardActivityWidget>
         ) : (
           <Button
             onClick={() =>
-              (window.location.href = `http://www.strava.com/oauth/authorize?client_id=54661&response_type=code&redirect_uri=http://localhost:3001/dashboard/exchange_token&approval_prompt=force&scope=activity:read&state=strava_auth_code`)
+              (window.location.href = `http://www.strava.com/oauth/authorize?client_id=54661&response_type=code&redirect_uri=${FRONTEND_ENDPOINT}/dashboard/exchange_token&approval_prompt=force&scope=activity:read&state=strava_auth_code`)
             }
           >
             Connect to Strava

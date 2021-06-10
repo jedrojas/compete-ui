@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 
 import { usePostCallback } from '../components/hooks/fetch';
+import { BACKEND_ENDPOINT } from '../config';
 import { ICompetition, IJoinCompetitionPayload } from '../models/data-models';
 
 export function useJoinCompetitionQuery() {
@@ -13,7 +14,7 @@ export function useJoinCompetitionQuery() {
         Authorization: `Bearer ${accessToken}`,
       };
 
-      post("http://localhost:3000/user-competition", payload, headers)
+      post(`${BACKEND_ENDPOINT}/user-competition`, payload, headers)
         .then((data) => console.log("--joined competition--", data))
         .catch((e) => console.log("Error joining competition", e));
     },

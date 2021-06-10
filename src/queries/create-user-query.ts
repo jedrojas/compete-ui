@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 
 import { usePostCallback } from '../components/hooks/fetch';
+import { BACKEND_ENDPOINT } from '../config';
 import { ICreateUserPayload, IUser } from '../models/data-models';
 
 export function useCreateUserQuery() {
@@ -13,7 +14,7 @@ export function useCreateUserQuery() {
         Authorization: `Bearer ${accessToken}`,
       };
 
-      post("http://localhost:3000/user", payload, headers)
+      post(`${BACKEND_ENDPOINT}/user`, payload, headers)
         .then((data) =>
           console.log("--successfully added user to Compete DB--", data)
         )

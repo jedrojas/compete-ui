@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 
 import { usePostCallback } from '../components/hooks/fetch';
+import { BACKEND_ENDPOINT } from '../config';
 import { ICompetition, ICreateCompetitionPayload } from '../models/data-models';
 
 export function useCreateCompetitionQuery() {
@@ -13,7 +14,7 @@ export function useCreateCompetitionQuery() {
         Authorization: `Bearer ${accessToken}`,
       };
 
-      return post("http://localhost:3000/competition", payload, headers);
+      return post(`${BACKEND_ENDPOINT}/competition`, payload, headers);
     },
     [post]
   );

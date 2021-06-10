@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 
 import { useDeleteCallback } from '../components/hooks/fetch';
+import { BACKEND_ENDPOINT } from '../config';
 import { IDeleteUserTeamPayload } from '../models/data-models';
 
 export function useLeaveTeamQuery() {
@@ -14,7 +15,7 @@ export function useLeaveTeamQuery() {
       };
 
       return deleteFn(
-        `http://localhost:3000/user-team/${payload.utid}`,
+        `${BACKEND_ENDPOINT}/user-team/${payload.utid}`,
         payload,
         headers
       );

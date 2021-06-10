@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 
+import { BACKEND_ENDPOINT } from '../../config';
 import { ILeaderboardLI } from '../../models/data-models';
 import { useCompetitionState } from '../pages/competition-page/competition-context';
 import { usePost } from './fetch';
@@ -19,7 +20,7 @@ export const useLeaderboard = (type: string) => {
   const { data, loading, error } = usePost<
     ILeaderboardLI[],
     ILeaderboardPayload
-  >(`http://localhost:3000/competition/${cid}/leaderboard/${type}`, payload);
+  >(`${BACKEND_ENDPOINT}/competition/${cid}/leaderboard/${type}`, payload);
 
   return { data, loading, error };
 };

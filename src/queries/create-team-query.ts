@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 
 import { usePostCallback } from '../components/hooks/fetch';
+import { BACKEND_ENDPOINT } from '../config';
 import { ICreateTeamPayload, ITeam } from '../models/data-models';
 
 export function useCreateTeamQuery() {
@@ -13,7 +14,7 @@ export function useCreateTeamQuery() {
         Authorization: `Bearer ${accessToken}`,
       };
 
-      return post("http://localhost:3000/team", payload, headers);
+      return post(`${BACKEND_ENDPOINT}/team`, payload, headers);
     },
     [post]
   );

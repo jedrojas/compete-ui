@@ -7,6 +7,7 @@ import classnames from 'classnames';
 import React from 'react';
 import { Col, Container, Dropdown, Row } from 'react-bootstrap';
 
+import { FRONTEND_ENDPOINT } from '../../../config';
 import { useUserState } from '../../contexts/user-context';
 import { SideBar } from '../../shared/side-bar/side-bar';
 
@@ -62,7 +63,7 @@ export const BasePageLayout: React.FC<IBasePageLayout> = ({
                   {`${user?.last_name}, ${user?.first_name}`}
                 </Dropdown.ItemText>
                 <Dropdown.Item
-                  onClick={() => logout({ returnTo: "http://localhost:3001/" })}
+                  onClick={() => logout({ returnTo: FRONTEND_ENDPOINT })}
                 >
                   Logout
                 </Dropdown.Item>

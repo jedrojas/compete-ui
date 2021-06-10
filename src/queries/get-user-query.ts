@@ -2,6 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useMemo } from 'react';
 
 import { useGet } from '../components/hooks/fetch';
+import { BACKEND_ENDPOINT } from '../config';
 import { IUser } from '../models/data-models';
 
 export function useGetUserQuery() {
@@ -16,7 +17,7 @@ export function useGetUserQuery() {
   );
 
   const { data, loading, error } = useGet<IUser & { no_entry: string }>(
-    `http://localhost:3000/user/${user?.sub}`,
+    `${BACKEND_ENDPOINT}/user/${user?.sub}`,
     headers
   );
 

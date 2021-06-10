@@ -2,7 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useCallback, useMemo, useState } from 'react';
 
 import { usePostCallback } from '../components/hooks/fetch';
-import { STRAVA_CLIENT_ID, STRAVA_CLIENT_SECRET } from '../config';
+import { BACKEND_ENDPOINT, STRAVA_CLIENT_ID, STRAVA_CLIENT_SECRET } from '../config';
 import { IStravaTokenPayload, IStravaTokenResponse, SyncStravaActivitiesPayload } from '../models/data-models';
 
 export function useGetStravaActivities() {
@@ -48,7 +48,7 @@ export function useGetStravaActivities() {
           .catch((err) => console.log("Error refreshing access token:", err));
       });
 
-    postActivities(`http://localhost:3000/activity/strava`, payload)
+    postActivities(`${BACKEND_ENDPOINT}/activity/strava`, payload)
       .then((res) => {
         console.log("Successfully retrieved activities from Strava!", res);
       })

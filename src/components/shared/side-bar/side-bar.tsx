@@ -1,6 +1,6 @@
 import './side-bar.scss';
 
-import { faFlagCheckered, faHome, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faFlagCheckered, faHome } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classnames from 'classnames';
 import React, { useState } from 'react';
@@ -27,7 +27,6 @@ export const SideBar: React.FC<ISideBar> = () => {
         rounded={false}
       >
         <div
-          // noGutters
           className="font-montserrat color-teal my-3 pl-2 px-auto cursor-pointer justify-content-center"
           style={{
             fontSize: "44px",
@@ -67,19 +66,6 @@ export const SideBar: React.FC<ISideBar> = () => {
               <FontAwesomeIcon icon={faFlagCheckered} />
             </Col>
             <Col xs="10">Competitions</Col>
-          </Row>
-        </NavLink>
-
-        <NavLink to="/teams" className="px-auto" activeClassName="active">
-          <Row
-            noGutters
-            className="side-bar-item no-hover-line p-3 cursor-pointer justify-content-center"
-            style={{ width: "300px" }}
-          >
-            <Col xs="2">
-              <FontAwesomeIcon icon={faUsers} />
-            </Col>
-            <Col xs="10">Teams</Col>
           </Row>
         </NavLink>
       </BaseNeoCard>

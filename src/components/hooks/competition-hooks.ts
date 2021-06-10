@@ -1,6 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from 'react';
 
+import { BACKEND_ENDPOINT } from '../../config';
 import { ICompetition, IJoinableCompetition } from '../../models/data-models';
 
 export const useAllCompetitionsQuery = () => {
@@ -13,7 +14,7 @@ export const useAllCompetitionsQuery = () => {
       setLoading(true);
       new Promise<void>(async (resolve, reject) => {
         try {
-          await fetch(`http://localhost:3000/competition`, {
+          await fetch(`${BACKEND_ENDPOINT}/competition`, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
@@ -54,7 +55,7 @@ export const useJoinableCompetitionsQuery = () => {
         if (user?.sub) {
           try {
             await fetch(
-              `http://localhost:3000/user/${user.sub}/joinable-competitions`,
+              `${BACKEND_ENDPOINT}/user/${user.sub}/joinable-competitions`,
               {
                 method: "GET",
                 headers: {

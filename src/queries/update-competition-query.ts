@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 
 import { usePutCallback } from '../components/hooks/fetch';
+import { BACKEND_ENDPOINT } from '../config';
 import { ICompetition, IUpdateCompetitionPayload } from '../models/data-models';
 
 export function useUpdateCompetitionQuery() {
@@ -16,7 +17,7 @@ export function useUpdateCompetitionQuery() {
       };
 
       setLoading(true);
-      await put(`http://localhost:3000/competition/${cid}`, payload, headers)
+      await put(`${BACKEND_ENDPOINT}/competition/${cid}`, payload, headers)
         .then(() => {
           setTimeout(() => window.location.reload(), 1000);
         })

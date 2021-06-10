@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 
 import { useGet } from '../components/hooks/fetch';
 import { ICompetitionType } from '../components/shared/new-competition-modal/new-competition-modal';
+import { BACKEND_ENDPOINT } from '../config';
 import { IUser } from '../models/data-models';
 
 export const useGetCompetitionParticipantsQuery = (
@@ -18,7 +19,7 @@ export const useGetCompetitionParticipantsQuery = (
   );
 
   const { data, loading, error } = useGet<IUser[]>(
-    `http://localhost:3000/competition/${cid}/participants/${listType}`,
+    `${BACKEND_ENDPOINT}/competition/${cid}/participants/${listType}`,
     headers
   );
 
