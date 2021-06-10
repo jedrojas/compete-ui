@@ -75,7 +75,7 @@ const UserProvider = ({ children }) => {
             onSubmit={handleSubmit((data) => {
               updateUser(data.firstName, data.lastName);
               createUserQuery({
-                id: auth0User?.sub,
+                id: auth0User?.sub ?? "",
                 first_name: data.firstName,
                 last_name: data.lastName,
               });
