@@ -13,13 +13,13 @@ export const useAddUserToDbCheck = async () => {
 
   if (accessToken && user?.sub) {
     await get<IUser & { no_entry: string }>(
-      `${BACKEND_ENDPOINT}/user/${user.sub}`,
+      `${BACKEND_ENDPOINT}/user/${user?.sub}`,
       accessToken
     )
       .then((data) => {
         if (data.no_entry) {
           createUserQuery({
-            id: user.sub,
+            id: user?.sub ?? "",
           });
           window.location.reload();
         }

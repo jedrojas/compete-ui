@@ -55,7 +55,7 @@ export const useJoinableCompetitionsQuery = () => {
         if (user?.sub) {
           try {
             await fetch(
-              `${BACKEND_ENDPOINT}/user/${user.sub}/joinable-competitions`,
+              `${BACKEND_ENDPOINT}/user/${user?.sub}/joinable-competitions`,
               {
                 method: "GET",
                 headers: {

@@ -28,7 +28,7 @@ export const AdminParticipantWidget: React.FC<IAdminParticipantWidget> = () => {
               <Button
                 onClick={() => {
                   joinCompetitionQuery({
-                    user_id: user.sub,
+                    user_id: user?.sub ?? "",
                     competition_id: cid,
                   });
                   setTimeout(() => window.location.reload(), 1000);

@@ -17,7 +17,7 @@ export const useGetUserMetaData = () => {
     const fetchData = async () => {
       try {
         const getMetadata = await fetch(
-          `${domainName}/api/v2/users/${user.sub}`,
+          `${domainName}/api/v2/users/${user?.sub}`,
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,
@@ -71,7 +71,7 @@ export const useUpdateUserMetadata = () => {
       throw e;
     }
 
-    await fetch(`https://dev-k8hhju21.us.auth0.com/api/v2/users/${user.sub}`, {
+    await fetch(`https://dev-k8hhju21.us.auth0.com/api/v2/users/${user?.sub}`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${accessToken}`,
